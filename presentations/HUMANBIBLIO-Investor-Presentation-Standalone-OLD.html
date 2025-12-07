@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUMANBIBLIO - Investor Pitch Deck</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: white;
+        }
+
+        .slide {
+            width: 210mm;
+            height: 297mm;
+            padding: 60px;
+            page-break-after: always;
+            position: relative;
+            background: white;
+        }
+
+        .slide:last-child {
+            page-break-after: auto;
+        }
+
+        /* Title Slide */
+        .title-slide {
+            background: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .title-slide h1 {
+            font-size: 64px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .title-slide .tagline {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 60px;
+            max-width: 800px;
+            line-height: 1.4;
+        }
+
+        .title-slide .platforms {
+            font-size: 20px;
+            margin-bottom: 80px;
+            font-weight: 500;
+        }
+
+        .title-slide .team {
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+
+        .title-slide .team-member {
+            margin-bottom: 15px;
+        }
+
+        .title-slide .contact {
+            font-size: 16px;
+            margin-bottom: 60px;
+        }
+
+        .title-slide .ask {
+            font-size: 22px;
+            font-weight: 600;
+            padding: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Regular Slides */
+        h2 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: #0066cc;
+        }
+
+        h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        h4 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #0066cc;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            font-size: 18px;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+
+        th {
+            background: #0066cc;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .stat-box {
+            background: #f0f7ff;
+            border-left: 4px solid #0066cc;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .stat-box strong {
+            color: #0066cc;
+            font-size: 20px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 3px solid #0066cc;
+        }
+
+        .feature-item h5 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #0066cc;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .checkmark {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .crossmark {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 30px;
+            right: 60px;
+            font-size: 14px;
+            color: #999;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .slide {
+                margin: 0;
+                box-shadow: none;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- SLIDE 1: TITLE -->
+<div class="slide title-slide">
+    <h1>HUMANBIBLIO</h1>
+    <div class="tagline">The Trust Economy: Where Human Connection Replaces Algorithmic Manipulation</div>
+
+    <div class="platforms">
+        <strong>ÁGORA</strong> • Professional + Social Networking<br>
+        <strong>World Boulevard</strong> • Local Business Discovery<br>
+        <strong>You Are Not Alone</strong> • Community Projects
+    </div>
+
+    <div class="team">
+        <div class="team-member"><strong>Dr. Juan de J. Sanchez</strong>, Founder & CEO<br>
+        <em>Physician • Mental Health Specialist</em></div>
+        <div class="team-member"><strong>Allan Viquez</strong>, VP Marketing & Operations<br>
+        <em>Multilingual Marketing Expert</em></div>
+    </div>
+
+    <div class="contact">
+        📧 Humanbiblio@gmail.com<br>
+        📱 (289) 990-0450<br>
+        📍 St. Catharines, Ontario, Canada
+    </div>
+
+    <div class="ask">
+        <strong>Seeking:</strong> $1.5M Seed Round<br>
+        <strong>Valuation:</strong> $10M Post-Money<br>
+        <strong>Equity Offered:</strong> 15%
+    </div>
+</div>
+
+<!-- SLIDE 2: PROBLEM -->
+<div class="slide">
+    <h2>The Problem</h2>
+    <p class="subtitle">The Broken Economics of Social Media</p>
+
+    <div class="section">
+        <h4>PROBLEM #1: The Attention Economy Infrastructure</h4>
+        <p><strong>Current Model:</strong> Capture attention → Sell to advertisers → Maximize engagement (addiction) → Repeat</p>
+        <div class="stat-box">
+            <strong>$200B+ spent annually</strong> manipulating users through targeted ads<br>
+            <strong>2.4 billion people</strong> report social media harms their mental health<br>
+            <strong>73% of users</strong> distrust platforms with their data
+        </div>
+    </div>
+
+    <div class="section">
+        <h4>PROBLEM #2: Local Economies Collapsing</h4>
+        <ul>
+            <li><span class="crossmark">✗</span> Can't find local professionals (LinkedIn shows people 5,000km away)</li>
+            <li><span class="crossmark">✗</span> Can't support local businesses (Google Maps doesn't enable relationships)</li>
+            <li><span class="crossmark">✗</span> Can't organize communities (Nextdoor is toxic, no action tools)</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h4>PROBLEM #3: The Trust Collapse</h4>
+        <p>Users don't trust the platforms they use most due to manipulative algorithms, intrusive advertising, and data sold without consent.</p>
+    </div>
+
+    <div class="footer">Slide 2</div>
+</div>
+
+<!-- SLIDE 3: SOLUTION -->
+<div class="slide">
+    <h2>The Solution</h2>
+    <p class="subtitle">A New Economic Infrastructure: The Trust Economy</p>
+
+    <div class="section">
+        <h4>PLATFORM #1: ÁGORA</h4>
+        <p><em>Professional + Social Networking That Works Locally</em></p>
+        <ul>
+            <li><span class="checkmark">✓</span> Proximity-based search: Find professionals within 5km</li>
+            <li><span class="checkmark">✓</span> Direct communication: Message, call, video—no algorithm interference</li>
+            <li><span class="checkmark">✓</span> ZERO ADVERTISING in social feeds</li>
+            <li><span class="checkmark">✓</span> Anti-addiction design: Usage timers, no infinite scroll</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h4>PLATFORM #2: World Boulevard</h4>
+        <p><em>Discover Local Businesses + Connect With Owners</em></p>
+        <ul>
+            <li><span class="checkmark">✓</span> Proximity discovery: Search by distance, not ad rank</li>
+            <li><span class="checkmark">✓</span> Direct owner messaging: Chat with business owners, not bots</li>
+            <li><span class="checkmark">✓</span> Integrated commerce: Book, order, pay—all in-platform</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h4>PLATFORM #3: You Are Not Alone</h4>
+        <p><em>Fund Community Projects With Your Neighbors</em></p>
+        <ul>
+            <li><span class="checkmark">✓</span> Community proposals & hyperlocal crowdfunding</li>
+            <li><span class="checkmark">✓</span> Transparent execution & progress tracking</li>
+            <li><span class="checkmark">✓</span> Democratic governance</li>
+        </ul>
+    </div>
+
+    <div class="footer">Slide 3</div>
+</div>
+
+<!-- SLIDE 4: UNDERLYING MAGIC -->
+<div class="slide">
+    <h2>Underlying Magic</h2>
+    <p class="subtitle">Technology That Creates Insurmountable Moats</p>
+
+    <div class="section">
+        <h4>DEFENSIBILITY #1: Scalable AI Personality System</h4>
+        <p><strong>Launch:</strong> 8 Core AI Personalities (Professional Coach, Local Explorer, Community Organizer, Wellness Guardian, Safety Monitor, Language Mediator, Business Advisor, Conflict Resolver)</p>
+        <p><strong>5-Year Vision:</strong> 100+ Profession-Specific AI Profiles</p>
+        <div class="stat-box">
+            <strong>Revolutionary:</strong> AI that learns YOUR specific communication patterns and professional expertise at scale
+        </div>
+    </div>
+
+    <div class="section">
+        <h4>DEFENSIBILITY #2: Cross-Language Expert Communication</h4>
+        <p>Not translation. Contextual interpretation with professional accuracy.</p>
+        <p><strong>Launch:</strong> English + Spanish | <strong>Year 5:</strong> 5+ languages</p>
+    </div>
+
+    <div class="section">
+        <h4>DEFENSIBILITY #3: Proximity-Native Architecture</h4>
+        <p>Everything happens within 10km. Real-time geolocation, distance-based search, auto-detect neighborhoods.</p>
+    </div>
+
+    <div class="section">
+        <h4>DEFENSIBILITY #4: Ethical AI Training Data Source</h4>
+        <p>High-quality, authentic human interaction data from anti-addiction design. Market size: <strong>$2.3B by 2030</strong> (growing 25% annually)</p>
+    </div>
+
+    <div class="footer">Slide 4</div>
+</div>
+
+<!-- SLIDE 5: BUSINESS MODEL -->
+<div class="slide">
+    <h2>Business Model</h2>
+    <p class="subtitle">Three Revenue Streams. Clear Path to Profitability.</p>
+
+    <div class="section">
+        <h4>REVENUE STREAM #1: Freemium Users (ÁGORA)</h4>
+        <p><strong>Free Tier:</strong> Profile, search within 10km, unlimited messaging, 1-to-1 calls</p>
+        <p><strong>Premium Tier ($5/month):</strong> Advanced search, priority visibility, analytics, multi-party calls, verified badge</p>
+        <p><strong>Target Conversion:</strong> 3% Year 1 → 9% Year 5</p>
+    </div>
+
+    <div class="section">
+        <h4>REVENUE STREAM #2: Business Subscriptions (World Boulevard)</h4>
+        <p><strong>Standard ($15/month):</strong> Payment processing, enhanced profile, customer management</p>
+        <p><strong>Professional ($50/month):</strong> + Promoted listings, advanced analytics, marketing tools</p>
+        <p><strong>Enterprise ($150/month):</strong> + Multi-location, API access, white-label options</p>
+        <p><strong>Target:</strong> 50-70% of businesses convert to paid</p>
+    </div>
+
+    <div class="section">
+        <h4>REVENUE STREAM #3: Enterprise/White-Label (B2B)</h4>
+        <p><strong>Pricing:</strong> $10K-$50K annually</p>
+        <p><strong>Customers:</strong> Chambers of Commerce, Business Associations, Municipal Governments, Professional Associations</p>
+    </div>
+
+    <div class="stat-box">
+        <strong>Unit Economics (Year 5):</strong> CAC $12 | LTV $58 | LTV:CAC 4.8:1 | Gross Margin 85%
+    </div>
+
+    <div class="footer">Slide 5</div>
+</div>
+
+<!-- SLIDE 6: MARKETING & SALES -->
+<div class="slide">
+    <h2>Marketing & Sales</h2>
+    <p class="subtitle">How We Acquire 35,000 Users in Year 1 With $525K</p>
+
+    <div class="section">
+        <h4>PHASE 1: Geographic Seeding (Months 1-4)</h4>
+        <p><strong>Target City:</strong> Guadalajara, Mexico (5M population)</p>
+        <p><strong>Why:</strong> Large enough to prove scalability, tech-savvy, Spanish-speaking, strong community culture</p>
+        <p><strong>Goal:</strong> 5,000 users, 200 businesses | <strong>Budget:</strong> $55K</p>
+    </div>
+
+    <div class="section">
+        <h4>PHASE 2: Viral Mechanics (Months 5-8)</h4>
+        <p><strong>Referral Incentives:</strong> Invite 3 friends → 3 months Premium free</p>
+        <p><strong>Expected Virality:</strong> 1.3x (each user brings 1.3 more)</p>
+        <p><strong>Goal:</strong> 18,000 users | <strong>Budget:</strong> $70K</p>
+    </div>
+
+    <div class="section">
+        <h4>PHASE 3: Paid Acquisition (Months 9-12)</h4>
+        <ul>
+            <li><strong>Meta Ads:</strong> $120K (video testimonials, founder story)</li>
+            <li><strong>Google Local Services:</strong> $80K</li>
+            <li><strong>TikTok Ads:</strong> $50K (anti-algorithm message)</li>
+        </ul>
+        <p><strong>Expected CAC:</strong> $13-14 | <strong>Goal:</strong> 18,000 users from paid</p>
+    </div>
+
+    <div class="stat-box">
+        <strong>Year 1 Total:</strong> 35,000 users, ~700 businesses | <strong>Average CAC:</strong> $15
+    </div>
+
+    <div class="footer">Slide 6</div>
+</div>
+
+<!-- SLIDE 7: COMPETITION -->
+<div class="slide">
+    <h2>Competition</h2>
+    <p class="subtitle">We're Not Better—We're Different</p>
+
+    <div class="section">
+        <h4>Competitive Positioning: "Ethical Local"</h4>
+        <p>We don't compete in existing categories. We occupy a new one.</p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>HUMANBIBLIO</th>
+                <th>LinkedIn</th>
+                <th>Facebook</th>
+                <th>Nextdoor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Professional Networking</td>
+                <td>✓</td>
+                <td>✓</td>
+                <td>✗</td>
+                <td>✗</td>
+            </tr>
+            <tr>
+                <td>Local Commerce</td>
+                <td>✓</td>
+                <td>✗</td>
+                <td>Partial</td>
+                <td>✗</td>
+            </tr>
+            <tr>
+                <td>Community Projects</td>
+                <td>✓</td>
+                <td>✗</td>
+                <td>Partial</td>
+                <td>✗</td>
+            </tr>
+            <tr>
+                <td>Anti-Addiction</td>
+                <td>✓</td>
+                <td>✗</td>
+                <td>✗</td>
+                <td>✗</td>
+            </tr>
+            <tr>
+                <td>Proximity-Native</td>
+                <td>✓</td>
+                <td>✗</td>
+                <td>✗</td>
+                <td>✓</td>
+            </tr>
+            <tr>
+                <td>3-in-1 Integration</td>
+                <td>✓</td>
+                <td>✗</td>
+                <td>✗</td>
+                <td>✗</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="stat-box">
+        <strong>Unfair Advantage:</strong> 18-24 month head start. By the time competitors launch, network effects protect us.
+    </div>
+
+    <div class="footer">Slide 7</div>
+</div>
+
+<!-- SLIDE 8: FINANCIAL PROJECTIONS -->
+<div class="slide">
+    <h2>Financial Projections</h2>
+    <p class="subtitle">Conservative Assumptions. Clear Path to $112M.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Cities</th>
+                <th>Users</th>
+                <th>Revenue</th>
+                <th>Net Profit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>35K</td>
+                <td>$186K</td>
+                <td>-$809K</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>4</td>
+                <td>180K</td>
+                <td>$3.0M</td>
+                <td><strong>+$1.7M</strong></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>10</td>
+                <td>650K</td>
+                <td>$13.8M</td>
+                <td>+$9.6M</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>18</td>
+                <td>2.1M</td>
+                <td>$44.1M</td>
+                <td>+$33.8M</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>25+</td>
+                <td>5.5M</td>
+                <td><strong>$112.1M</strong></td>
+                <td><strong>+$91.1M</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="stat-box">
+        <strong>PROFITABLE BY MONTH 14 (Year 2, Q2)</strong>
+    </div>
+
+    <div class="section">
+        <h4>Revenue Mix (Year 5)</h4>
+        <p><strong>26%</strong> ÁGORA Premium: $29.7M</p>
+        <p><strong>61%</strong> World Boulevard: $68.4M</p>
+        <p><strong>13%</strong> Enterprise: $14M</p>
+    </div>
+
+    <div class="section">
+        <h4>Investor Returns</h4>
+        <p><strong>Acquisition Year 4:</strong> 10x revenue = $441M valuation → <strong>44x return in 4 years</strong></p>
+        <p><strong>IPO Year 7:</strong> 15-20x revenue = $3.75-5B valuation → <strong>200-267x return</strong></p>
+    </div>
+
+    <div class="footer">Slide 8</div>
+</div>
+
+<!-- SLIDE 9: TEAM -->
+<div class="slide">
+    <h2>The Team</h2>
+    <p class="subtitle">Proven Executors. Unique Credentials.</p>
+
+    <div class="section">
+        <h4>Dr. Juan de J. Sanchez - Founder & CEO</h4>
+        <p><strong>Background:</strong> Colombian Physician, Master's in Mental Health, Immigrant to Canada</p>
+        <p><strong>Expertise:</strong> Understands addiction science (not just claiming "ethical"), high-stakes communication & trust-building, lived cultural/language barriers HUMANBIBLIO solves</p>
+        <p><strong>Unique Authority:</strong> Can speak credibly to mental health crisis, healthcare background = institutional trust</p>
+        <div class="stat-box">
+            <strong>Media Story:</strong> "Physician who couldn't code built anti-Facebook—and it works"
+        </div>
+    </div>
+
+    <div class="section">
+        <h4>Allan Viquez - VP Marketing & Operations</h4>
+        <p><strong>Background:</strong> Costa Rican Marketing Expert, Immigrant to Canada, Multilingual (English, Spanish, Portuguese, Italian, French, Catalan)</p>
+        <p><strong>Expertise:</strong> 10+ years digital marketing, North American + LatAm market knowledge, growth playbooks that work</p>
+    </div>
+
+    <div class="section">
+        <h4>Why This Team Will Win</h4>
+        <ul>
+            <li><strong>We Did the Impossible:</strong> Built what took Nextdoor $18M + 3 years with $0 and 9 months</li>
+            <li><strong>Capital-Efficient Execution:</strong> Now asking for 1/12th of what Nextdoor raised to achieve 10x their traction</li>
+            <li><strong>Domain Experts:</strong> Healthcare + Marketing, not just tech founders</li>
+            <li><strong>Moral Authority:</strong> Physician with mental health expertise can speak to harm of attention economy</li>
+        </ul>
+    </div>
+
+    <div class="footer">Slide 9</div>
+</div>
+
+<!-- SLIDE 10: THE ASK -->
+<div class="slide">
+    <h2 style="text-align: center; margin-bottom: 15px;">THE ASK</h2>
+    <p class="subtitle" style="text-align: center; margin-bottom: 25px;">$1.5M @ $10M POST-MONEY (15% EQUITY)</p>
+
+    <div class="section" style="background: linear-gradient(135deg, #22c55e 0%, #2563eb 100%); color: white; padding: 20px; border-radius: 12px; margin-bottom: 15px;">
+        <h4 style="text-align: center; color: white; margin-bottom: 12px;">USE OF FUNDS</h4>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; text-align: center; font-size: 13px;">
+            <div>
+                <div style="font-size: 11px; opacity: 0.8; margin-bottom: 5px;">TEAM</div>
+                <div style="font-size: 32px; font-weight: bold;">40%</div>
+                <div style="font-size: 11px; opacity: 0.8;">$600K</div>
+            </div>
+            <div>
+                <div style="font-size: 11px; opacity: 0.8; margin-bottom: 5px;">MARKETING</div>
+                <div style="font-size: 32px; font-weight: bold;">35%</div>
+                <div style="font-size: 11px; opacity: 0.8;">$525K</div>
+            </div>
+            <div>
+                <div style="font-size: 11px; opacity: 0.8; margin-bottom: 5px;">TECHNOLOGY</div>
+                <div style="font-size: 32px; font-weight: bold;">15%</div>
+                <div style="font-size: 11px; opacity: 0.8;">$225K</div>
+            </div>
+            <div>
+                <div style="font-size: 11px; opacity: 0.8; margin-bottom: 5px;">LEGAL & OPS</div>
+                <div style="font-size: 32px; font-weight: bold;">10%</div>
+                <div style="font-size: 11px; opacity: 0.8;">$150K</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" style="background: #fef3c7; border: 2px solid #eab308; padding: 15px; border-radius: 12px; margin-bottom: 15px;">
+        <h4 style="text-align: center; color: #854d0e; margin-bottom: 10px;">WHAT $1.5M BUYS YOU</h4>
+        <ul style="font-size: 12px; line-height: 1.6;">
+            <li>✅ 12-month runway (to profitability)</li>
+            <li>✅ 35,000 users, 1,200 businesses (proof of scale)</li>
+            <li>✅ 4-city expansion ready (Month 18)</li>
+            <li>✅ $3M revenue, $1.7M profit Year 2 (de-risked Series A)</li>
+            <li>✅ Defensible moat (Trust Score data, network effects, IP protection)</li>
+        </ul>
+    </div>
+
+    <div class="section" style="background: #1f2937; color: white; padding: 15px; border-radius: 12px; margin-bottom: 15px;">
+        <h4 style="text-align: center; color: #fbbf24; margin-bottom: 10px;">INVESTOR RETURNS</h4>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; font-size: 11px; text-align: center;">
+            <div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 8px;">
+                <p style="font-weight: 600; color: #4ade80; margin-bottom: 5px;">Scenario 1: Acquisition Year 5</p>
+                <p style="font-size: 18px; font-weight: bold; margin: 5px 0;">$1.5M → $135M</p>
+                <p>(90x in 5 years)</p>
+                <p style="font-size: 10px; opacity: 0.7; margin-top: 5px;">IRR: 151% annually</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 8px;">
+                <p style="font-weight: 600; color: #4ade80; margin-bottom: 5px;">Scenario 2: Fast Exit Year 3</p>
+                <p style="font-size: 18px; font-weight: bold; margin: 5px 0;">$1.5M → $20.7M</p>
+                <p>(13.8x in 3 years)</p>
+                <p style="font-size: 10px; opacity: 0.7; margin-top: 5px;">IRR: 128% annually</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 8px;">
+                <p style="font-weight: 600; color: #4ade80; margin-bottom: 5px;">Scenario 3: IPO Year 7-8</p>
+                <p style="font-size: 18px; font-weight: bold; margin: 5px 0;">$1.5M → $400M</p>
+                <p>(267x in 7 years)</p>
+                <p style="font-size: 10px; opacity: 0.7; margin-top: 5px;">IRR: 141% annually</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" style="background: linear-gradient(135deg, #ef4444 0%, #ec4899 100%); color: white; padding: 15px; border-radius: 12px; margin-bottom: 15px;">
+        <h4 style="text-align: center; color: white; margin-bottom: 10px;">WHY INVEST NOW?</h4>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; font-size: 11px; text-align: center;">
+            <div>✅ <strong>Product Done</strong><br/>Not paying to build</div>
+            <div>✅ <strong>Execution Proven</strong><br/>Built $5M platform with $0</div>
+            <div>✅ <strong>Market Ready</strong><br/>Post-pandemic demand</div>
+            <div>✅ <strong>Competition Complementary</strong><br/>Filling gaps</div>
+            <div>✅ <strong>Path Clear</strong><br/>Profitable Month 14-18</div>
+            <div>✅ <strong>IP Protected</strong><br/>Patents pending</div>
+        </div>
+    </div>
+
+    <div class="section" style="background: #1f2937; color: white; padding: 20px; border-radius: 12px; text-align: center;">
+        <h3 style="font-size: 28px; font-weight: bold; color: #fbbf24; margin-bottom: 15px;">THE CLOSE</h3>
+
+        <p style="font-size: 16px; margin-bottom: 15px;">
+            We did the impossible:<br/>
+            Built what took Nextdoor $18M + 3 years.<br/>
+            With $0 and 9 months. As non-programmers.
+        </p>
+
+        <div style="border-top: 1px solid rgba(255,255,255,0.2); border-bottom: 1px solid rgba(255,255,255,0.2); padding: 12px; margin: 15px 0;">
+            <p style="font-size: 14px;">
+                Now we're asking for 1/12th<br/>
+                To achieve 10x their traction.<br/>
+                To turn profitable in 14-18 months.
+            </p>
+        </div>
+
+        <p style="font-size: 16px; font-weight: bold; color: #4ade80; margin-bottom: 15px;">
+            THIS IS THE SAFEST SEED INVESTMENT YOU'LL SEE THIS YEAR
+        </p>
+
+        <p style="font-size: 11px; margin-bottom: 15px;">
+            Product: ✅ Built | IP: ✅ Protected | Team: ✅ Proven<br/>
+            Market: ✅ Ready | Moats: ✅ Defensible | Path: ✅ Clear
+        </p>
+
+        <h2 style="font-size: 42px; font-weight: bold; color: #fbbf24; margin: 20px 0;">Are you in?</h2>
+
+        <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 11px;">
+            <p><strong>Dr. Juan de J. Sanchez</strong> | Founder & CEO</p>
+            <p><strong>Allan Viquez</strong> | VP Marketing & Operations</p>
+            <p style="margin-top: 10px;">
+                📧 Humanbiblio@gmail.com<br/>
+                📱 (289) 990-0450<br/>
+                📍 St. Catharines, Ontario, Canada
+            </p>
+        </div>
+    </div>
+
+    <div class="footer">Slide 10</div>
+</div>
+
+<!-- CLOSING SLIDE -->
+<div class="slide title-slide">
+    <h1>HUMANBIBLIO</h1>
+    <div class="tagline">This is the safest seed investment you'll see this year.</div>
+
+    <div style="font-size: 32px; margin: 60px 0; font-weight: 600;">
+        Are you in?
+    </div>
+
+    <div class="team" style="margin-bottom: 30px;">
+        <div class="team-member" style="margin-bottom: 15px;"><strong>Dr. Juan de J. Sanchez</strong> | Founder & CEO</div>
+        <div class="team-member">
+            <strong>Allan Viquez</strong> | VP Marketing & Operations<br/>
+            <span style="font-size: 18px; font-style: italic; opacity: 0.9;">English, Spanish, Portuguese, Italian, French, Catalan</span>
+        </div>
+    </div>
+
+    <div class="contact" style="font-size: 20px;">
+        📧 Humanbiblio@gmail.com<br>
+        📱 (289) 990-0450<br>
+        📍 St. Catharines, Ontario, Canada
+    </div>
+
+    <div style="margin-top: 60px; font-size: 28px; font-weight: 500;">
+        Let's build the post-Facebook era—together.
+    </div>
+</div>
+
+</body>
+</html>

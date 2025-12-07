@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#2563eb" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="HUMANBIBLIO" />
+    
+    <!-- WhatsApp Mobile Optimization -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="HUMANBIBLIO - La primera plataforma que libera la comunicación humana de algoritmos manipulativos. IA contextual + Comercio orgánico + PWA nativa. Logo corporativo integrado." />
+    <meta name="keywords" content="networking, conexiones, negocios, profesionales, inteligencia artificial, geolocalización, humanbiblio" />
+    <meta name="author" content="HUMANBIBLIO" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="HUMANBIBLIO - La Inteligencia Natural" />
+    <meta property="og:description" content="Primera plataforma que libera la comunicación humana de algoritmos manipulativos. IA contextual + Comercio orgánico + PWA instalable. Logo corporativo funcionando." />
+    <meta property="og:image" content="https://i.imgur.com/TzZrbxK.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://humanbiblio-official.netlify.app" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="HUMANBIBLIO - La Inteligencia Natural" />
+    <meta name="twitter:description" content="Primera plataforma que libera la comunicación humana de algoritmos manipulativos. Logo corporativo funcionando perfectamente." />
+    <meta name="twitter:image" content="https://i.imgur.com/TzZrbxK.png" />
+    
+    <!-- Favicon corporativo -->
+    <link rel="icon" type="image/png" href="https://i.imgur.com/TzZrbxK.png" />
+    <link rel="apple-touch-icon" href="https://i.imgur.com/TzZrbxK.png" />
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <title>HUMANBIBLIO - Libera tu Comunicación</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    
+    <!-- Verificación crítica mejorada -->
+    <script>
+      // Verificación ultra-robusta del elemento root
+      if (!document.getElementById('root')) {
+        console.error('❌ CRÍTICO: Elemento root no encontrado en DOM');
+        document.body.innerHTML = `
+          <div style="
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 2rem;
+          ">
+            <div>
+              <div style="font-size: 4rem; margin-bottom: 1rem;">🏛️</div>
+              <h1 style="font-size: 2.5rem; margin-bottom: 1rem; font-weight: bold;">HUMANBIBLIO</h1>
+              <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">La Inteligencia Natural</p>
+              <div style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 15px; padding: 1.5rem; margin-bottom: 2rem;">
+                <p style="color: #ffcccb; margin-bottom: 1rem;">❌ Error Crítico</p>
+                <p style="font-size: 0.9rem; opacity: 0.8;">Elemento root no encontrado en el DOM</p>
+              </div>
+              <button onclick="window.location.reload()" style="
+                background: rgba(255,255,255,0.2);
+                border: 2px solid rgba(255,255,255,0.3);
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 50px;
+                font-size: 1rem;
+                cursor: pointer;
+                font-weight: 600;
+              ">🔄 Recargar Página</button>
+            </div>
+          </div>
+        `;
+        throw new Error('Root element missing from DOM');
+      }
+      
+      // Verificar que React está disponible
+      console.log('✅ Elemento root encontrado');
+      console.log('🔧 Preparando carga de React...');
+      console.log('🎨 Logo corporativo: https://i.imgur.com/TzZrbxK.png');
+    </script>
+    
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- PWA Service Worker Registration -->
+    <script>
+      // Service Worker deshabilitado en desarrollo
+      console.log('ℹ️ Service Worker deshabilitado en entorno de desarrollo');
+    </script>
+  </body>
+</html>

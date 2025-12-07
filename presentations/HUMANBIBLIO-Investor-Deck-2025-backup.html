@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUMANBIBLIO - Investor Pitch Deck 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .presentation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .slide {
+            background: white;
+            border-radius: 16px;
+            padding: 60px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            border-bottom: 4px solid #22c55e;
+            padding-bottom: 20px;
+        }
+
+        .slide-subtitle {
+            font-size: 32px;
+            font-weight: 600;
+            color: #2a5298;
+            margin: 30px 0 20px 0;
+        }
+
+        .hero-section {
+            text-align: center;
+            background: linear-gradient(135deg, #1e3c72 0%, #22c55e 100%);
+            color: white;
+            padding: 80px 60px;
+        }
+
+        .hero-section h1 {
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-section h2 {
+            font-size: 36px;
+            font-weight: 400;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .hero-section .tagline {
+            font-size: 28px;
+            margin: 30px 0;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            border-left: 5px solid #22c55e;
+            transition: transform 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2);
+        }
+
+        .metric-value {
+            font-size: 48px;
+            font-weight: 800;
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+
+        .metric-label {
+            font-size: 18px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 16px;
+        }
+
+        .comparison-table th {
+            background: #1e3c72;
+            color: white;
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .checkmark {
+            color: #22c55e;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .crossmark {
+            color: #ef4444;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 5px solid #f59e0b;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .highlight-box h3 {
+            color: #92400e;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .problem-section {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-left: 5px solid #dc2626;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .solution-section {
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            border-left: 5px solid #22c55e;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: space-around;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            min-width: 200px;
+        }
+
+        .stat-number {
+            font-size: 56px;
+            font-weight: 800;
+            color: #22c55e;
+            display: block;
+        }
+
+        .stat-description {
+            font-size: 18px;
+            color: #64748b;
+            margin-top: 10px;
+        }
+
+        .team-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .team-member {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .team-member h3 {
+            font-size: 28px;
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+
+        .team-member h4 {
+            font-size: 20px;
+            color: #22c55e;
+            margin-bottom: 20px;
+        }
+
+        .team-member p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #475569;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #22c55e 100%);
+            color: white;
+            padding: 60px;
+            border-radius: 16px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 48px;
+            margin-bottom: 30px;
+        }
+
+        .cta-section p {
+            font-size: 24px;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+
+        .contact-info {
+            background: white;
+            color: #1e3c72;
+            padding: 40px;
+            border-radius: 12px;
+            margin-top: 30px;
+            font-size: 20px;
+            line-height: 1.8;
+        }
+
+        ul {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+
+        li {
+            margin: 15px 0;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .financial-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 16px;
+            background: white;
+        }
+
+        .financial-table th {
+            background: #1e3c72;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .financial-table td {
+            padding: 20px;
+            border-bottom: 1px solid #e2e8f0;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .financial-table tr:last-child td {
+            font-weight: 700;
+            font-size: 18px;
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .download-btn {
+            background: #22c55e;
+            color: white;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+        }
+
+        .download-btn:hover {
+            background: #16a34a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+        }
+
+        .ip-section {
+            background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+            border-left: 5px solid #7c3aed;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .ip-section h3 {
+            color: #5b21b6;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        @media print {
+            .slide {
+                page-break-inside: avoid;
+                margin-bottom: 0;
+            }
+            .download-btn {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 30px 20px;
+            }
+            .slide-title {
+                font-size: 32px;
+            }
+            .hero-section h1 {
+                font-size: 42px;
+            }
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+
+        <!-- 1: TITLE -->
+        <div class="slide hero-section">
+            <div style="margin: -80px -60px 40px -60px; padding: 60px; background: white; border-radius: 0;">
+                <div style="margin: 0 auto; padding: 40px 60px; background: linear-gradient(135deg, #1e3c72 0%, #22c55e 100%); border-radius: 16px; text-align: center; max-width: 650px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                    <svg width="140" height="140" viewBox="0 0 140 140" style="margin: 0 auto 20px auto; display: block;">
+                        <defs>
+                            <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#e0f2fe;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Building columns -->
+                        <rect x="30" y="60" width="15" height="60" fill="url(#logoGrad)" rx="2"/>
+                        <rect x="50" y="50" width="15" height="70" fill="url(#logoGrad)" rx="2"/>
+                        <rect x="75" y="50" width="15" height="70" fill="url(#logoGrad)" rx="2"/>
+                        <rect x="95" y="60" width="15" height="60" fill="url(#logoGrad)" rx="2"/>
+                        <!-- Roof -->
+                        <polygon points="70,25 20,55 120,55" fill="url(#logoGrad)" stroke="white" stroke-width="2"/>
+                        <!-- Base -->
+                        <rect x="15" y="120" width="110" height="8" fill="url(#logoGrad)" rx="2"/>
+                        <!-- Connection symbol (circle in center) -->
+                        <circle cx="70" cy="90" r="18" fill="#22c55e" stroke="white" stroke-width="3"/>
+                        <circle cx="70" cy="90" r="10" fill="white"/>
+                    </svg>
+                    <div style="font-size: 48px; font-weight: 800; letter-spacing: 3px; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); margin-bottom: 10px;">HUMANBIBLIO</div>
+                    <div style="font-size: 18px; color: white; opacity: 0.95; letter-spacing: 1px;">Connecting Communities Locally</div>
+                </div>
+            </div>
+            <h1 style="margin-top: 20px;">HUMANBIBLIO</h1>
+            <h2>LinkedIn Local + Yelp in One Platform</h2>
+            <p class="tagline">Where Your Professional Identity & Business Share the Same Trust Score</p>
+
+            <div style="margin: 50px 0; font-size: 24px; font-weight: 600;">
+                <div style="margin: 20px 0;">🌐 <strong>ÁGORA</strong> • Local Professional Networking (10km radius)</div>
+                <div style="margin: 20px 0;">🏪 <strong>World Boulevard</strong> • Business Discovery + Owner Connection</div>
+            </div>
+
+            <div style="margin: 50px 0; padding: 30px; background: rgba(255,255,255,0.2); border-radius: 12px;">
+                <div style="font-size: 28px; font-weight: 700; margin-bottom: 20px;">Launch Focus: Toronto/GTA</div>
+                <div style="font-size: 24px;">35,000 users Year 1</div>
+            </div>
+
+            <div class="contact-info">
+                <div style="margin-bottom: 30px;">
+                    <strong>Dr. Juan de J. Sanchez</strong>, Founder & CEO<br>
+                    <em>Physician • Mental Health Specialist • Colombian → Canada</em>
+                </div>
+                <div style="margin-bottom: 30px;">
+                    <strong>Allan Viquez</strong>, VP Marketing & Operations<br>
+                    <em>Marketing Expert • Multilingual (English, Spanish, French, Italian, Portuguese, Catalan) • Costa Rican → Canada</em>
+                </div>
+                <div style="font-size: 22px; margin-top: 30px;">
+                    📧 Humanbiblio@gmail.com<br>
+                    📱 (289) 990-0450<br>
+                    📍 St. Catharines, Ontario, Canada
+                </div>
+            </div>
+
+            <div style="margin-top: 50px; padding: 40px; background: rgba(0,0,0,0.2); border-radius: 12px;">
+                <div style="font-size: 32px; font-weight: 700; margin-bottom: 20px;">THE ASK</div>
+                <div style="font-size: 28px; line-height: 1.8;">
+                    <strong>Seeking:</strong> $1.5M Seed Round<br>
+                    <strong>Valuation:</strong> $10M Post-Money<br>
+                    <strong>Equity Offered:</strong> 15%<br>
+                    <strong>Use:</strong> Scale proven model (product 100% built)
+                </div>
+            </div>
+        </div>
+
+        <!-- 2: PROBLEM -->
+        <div class="slide">
+            <h1 class="slide-title">THE PROBLEM: THE LOCAL CONNECTION GAP</h1>
+            <p style="font-size: 22px; margin-bottom: 40px; line-height: 1.8;">
+                Despite living in dense cities, professionals and small businesses can't connect locally.
+            </p>
+
+            <div class="problem-section">
+                <h2 class="slide-subtitle">PROBLEM #1: Professionals Can't Find Each Other Locally</h2>
+                <p style="font-size: 18px; line-height: 1.8; margin-bottom: 20px;">
+                    <strong>The Gap:</strong> LinkedIn excels at global networking but lacks local proximity search.
+                </p>
+                <ul>
+                    <li>73% of freelancers say "finding local clients" is #1 challenge</li>
+                    <li>LinkedIn's algorithm prioritizes global connections over proximity</li>
+                    <li>No integrated search: "accountant within 10km"</li>
+                    <li>No built-in multimedia communication</li>
+                </ul>
+                <p style="font-size: 18px; margin-top: 20px; font-weight: 600;">
+                    <strong>Result:</strong> Work goes to platforms like TaskRabbit/Upwork (15-20% commission)
+                </p>
+            </div>
+
+            <div class="problem-section">
+                <h2 class="slide-subtitle">PROBLEM #2: Small Businesses Lack Direct Customer Connection</h2>
+                <p style="font-size: 18px; line-height: 1.8; margin-bottom: 20px;">
+                    <strong>The Gap:</strong> Google Maps/Yelp excel at discovery but lack owner communication.
+                </p>
+                <ul>
+                    <li>Google Ads: $500-$2,000/month to stay visible</li>
+                    <li>Yelp: $300-$1,500/month for promoted listings</li>
+                    <li>60% of small businesses closed during pandemic</li>
+                    <li>No direct messaging channel to owners</li>
+                    <li>No way to showcase "the person behind the business"</li>
+                </ul>
+            </div>
+
+            <div class="problem-section">
+                <h2 class="slide-subtitle">PROBLEM #3: Fragmented Local Ecosystems</h2>
+                <p style="font-size: 18px; line-height: 1.8;">
+                    Users must use 3-5 platforms separately (LinkedIn + Yelp + Facebook + Google)
+                </p>
+                <ul>
+                    <li>No unified trust score across professional + commercial identities</li>
+                    <li>Fragmented user experience = friction = lost opportunities</li>
+                </ul>
+            </div>
+
+            <div class="solution-section">
+                <h2 class="slide-subtitle">THE OPPORTUNITY</h2>
+                <p style="font-size: 20px; margin-bottom: 20px; font-weight: 600;">What if you could:</p>
+                <ul>
+                    <li>✅ Find trusted professionals <strong>within walking distance</strong></li>
+                    <li>✅ Discover local businesses <strong>and message the owner directly</strong></li>
+                    <li>✅ See a <strong>behavioral trust score</strong> (not fake reviews)</li>
+                    <li>✅ Connect professionally <strong>AND commercially</strong> with one profile</li>
+                    <li>✅ Replace 4 fragmented platforms with 1 integrated solution</li>
+                </ul>
+                <p style="font-size: 24px; margin-top: 30px; font-weight: 700; text-align: center;">
+                    WE ARE NOT REPLACING, WE ARE FILLING THE GAPS LEFT BEHIND
+                </p>
+            </div>
+
+            <div class="highlight-box">
+                <h3>MARKET SIZE</h3>
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <span class="stat-number">$480B</span>
+                        <span class="stat-description">TAM (Global)</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">$95B</span>
+                        <span class="stat-description">SAM (North America)</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">$112M</span>
+                        <span class="stat-description">Year 5 Revenue</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3: SOLUTION -->
+        <div class="slide">
+            <h1 class="slide-title">THE SOLUTION</h1>
+            <h2 class="slide-subtitle" style="text-align: center; font-size: 36px; color: #22c55e;">
+                HUMANBIBLIO = ÁGORA + WORLD BOULEVARD
+            </h2>
+            <p style="font-size: 22px; text-align: center; margin: 30px 0; line-height: 1.8;">
+                One integrated platform where professional identity and business identity share the same trust score.
+            </p>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div style="font-size: 48px; margin-bottom: 20px;">🌐</div>
+                    <h3 style="font-size: 28px; color: #1e3c72; margin-bottom: 15px;">ÁGORA</h3>
+                    <p style="font-size: 20px; font-weight: 600; margin-bottom: 15px;">LinkedIn Local</p>
+                    <ul style="text-align: left; padding-left: 20px;">
+                        <li>Professional profiles</li>
+                        <li>10km radius search</li>
+                        <li>In-app messaging, calls, video</li>
+                        <li>Behavioral Trust Score</li>
+                    </ul>
+                    <div style="margin-top: 20px; padding: 15px; background: white; border-radius: 8px;">
+                        <strong>Monetization:</strong><br>
+                        $5/mo Premium (3-9% conversion)
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div style="font-size: 48px; margin-bottom: 20px;">🏪</div>
+                    <h3 style="font-size: 28px; color: #1e3c72; margin-bottom: 15px;">WORLD BOULEVARD</h3>
+                    <p style="font-size: 20px; font-weight: 600; margin-bottom: 15px;">Yelp with Owner Connection</p>
+                    <ul style="text-align: left; padding-left: 20px;">
+                        <li>Business discovery</li>
+                        <li>Direct owner messaging</li>
+                        <li>See owner's Ágora profile</li>
+                        <li>Shared Trust Score</li>
+                    </ul>
+                    <div style="margin-top: 20px; padding: 15px; background: white; border-radius: 8px;">
+                        <strong>Monetization:</strong><br>
+                        $15-150/mo subscriptions
+                    </div>
+                </div>
+            </div>
+
+            <div class="solution-section">
+                <h3 style="font-size: 28px; margin-bottom: 20px;">THE INTEGRATION MAGIC</h3>
+                <p style="font-size: 20px; line-height: 1.8; margin-bottom: 20px;">
+                    <strong>Scenario: Maria the Baker</strong>
+                </p>
+                <ol style="font-size: 18px; line-height: 2;">
+                    <li>Maria creates Ágora profile (professional baker)</li>
+                    <li>Adds World Boulevard business (María's Artisan Bakery)</li>
+                    <li><strong>One Trust Score</strong> across both</li>
+                    <li>Local designer finds Maria on Ágora (needs baker for event)</li>
+                    <li>Discovers she has a café on WB (becomes regular customer)</li>
+                    <li>Designer recommends Maria to 5 friends (networking + commerce)</li>
+                    <li>Maria's Trust Score increases (virtuous cycle)</li>
+                </ol>
+            </div>
+
+            <h2 class="slide-subtitle">WHY THIS WORKS (What Makes Us Different)</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>HUMANBIBLIO</th>
+                        <th>LinkedIn</th>
+                        <th>Facebook</th>
+                        <th>Google Maps</th>
+                        <th>Yelp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Find local pros</strong></td>
+                        <td><span class="checkmark">✓</span> 10km search</td>
+                        <td>Global-first</td>
+                        <td>Groups only</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Message business owners</strong></td>
+                        <td><span class="checkmark">✓</span> Direct chat</td>
+                        <td>N/A</td>
+                        <td>No structure</td>
+                        <td><span class="crossmark">✗</span></td>
+                        <td><span class="crossmark">✗</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Unified identity</strong></td>
+                        <td><span class="checkmark">✓</span> Person+Business</td>
+                        <td>Professional only</td>
+                        <td>Mixed/unverified</td>
+                        <td>Business only</td>
+                        <td>Business only</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Trust Score</strong></td>
+                        <td><span class="checkmark">✓</span> Behavioral</td>
+                        <td>Endorsements</td>
+                        <td><span class="crossmark">✗</span></td>
+                        <td>Reviews</td>
+                        <td>Reviews</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Integrated comms</strong></td>
+                        <td><span class="checkmark">✓</span> Chat+voice+video</td>
+                        <td>InMail paywall</td>
+                        <td>Messenger</td>
+                        <td><span class="crossmark">✗</span></td>
+                        <td><span class="crossmark">✗</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 4: UNDERLYING MAGIC -->
+        <div class="slide">
+            <h1 class="slide-title">INTELLECTUAL PROPERTY & TECHNICAL MOATS</h1>
+            <p style="font-size: 22px; margin-bottom: 40px; text-align: center; line-height: 1.8;">
+                What makes HUMANBIBLIO defensible and unique
+            </p>
+
+            <div class="ip-section">
+                <h3>IP #1: DUAL IDENTITY ARCHITECTURE (Patent-Pending)</h3>
+                <p style="font-size: 18px; margin: 20px 0; line-height: 1.8;">
+                    <strong>Time to Replicate: 24-36 Months</strong>
+                </p>
+                <p style="font-size: 18px; line-height: 1.8; margin-bottom: 20px;">
+                    Unified user-business entity where one Trust Score flows across professional AND commercial identities.
+                </p>
+                <ul>
+                    <li><strong>Patent Claims Filed:</strong> Canada/US/Mexico</li>
+                    <li>Bidirectional navigation (professional ↔ business)</li>
+                    <li>Synchronized reputation system</li>
+                    <li>Prevents gaming across both identities</li>
+                </ul>
+                <div style="margin-top: 20px; padding: 20px; background: white; border-radius: 8px;">
+                    <strong>WHY IT IS DIFFICULT TO COPY US:</strong><br>
+                    LinkedIn = Professional-only architecture (can't add businesses)<br>
+                    Yelp/Google = Business-only architecture (no professional layer)<br>
+                    Facebook = Unstructured (can't retrofit unified trust)
+                </div>
+            </div>
+
+            <div class="ip-section">
+                <h3>IP #2: BEHAVIORAL TRUST SCORE SYSTEM (Proprietary Algorithm)</h3>
+                <p style="font-size: 18px; margin: 20px 0; line-height: 1.8;">
+                    <strong>Time to Replicate: 18-24 Months</strong>
+                </p>
+                <ul>
+                    <li>80% based on <strong>behavioral factors</strong> (not reviews)</li>
+                    <li>ML-powered interaction quality detection</li>
+                    <li>Anti-gaming network analysis</li>
+                    <li>Time-weighted reputation decay</li>
+                </ul>
+                <div style="margin-top: 20px; padding: 20px; background: white; border-radius: 8px;">
+                    <strong>Data Moat:</strong><br>
+                    Requires 6-12 months of behavioral data per user<br>
+                    Can't be faked (tracks actual interactions, not claims)<br>
+                    By Year 5: <strong>50M user-years of data = unassailable moat</strong>
+                </div>
+            </div>
+
+            <div class="ip-section">
+                <h3>IP #3: CROSS-PROMOTION ECONOMIC ENGINE (Business Method Patent)</h3>
+                <p style="font-size: 18px; margin: 20px 0; line-height: 1.8;">
+                    <strong>Time to Replicate: 18-24 Months</strong>
+                </p>
+                <ul>
+                    <li>30% of Ágora users discover WB businesses (0 additional CAC)</li>
+                    <li>40% of WB businesses create Ágora profiles (0 additional CAC)</li>
+                    <li>Dual LTV capture: $36/mo ARPU vs. $18/mo single-platform</li>
+                    <li>LTV:CAC ratio: 13:1 vs. 4.6:1 for competitors</li>
+                </ul>
+                <div style="margin-top: 20px; padding: 20px; background: white; border-radius: 8px;">
+                    <strong>Economic Advantage:</strong><br>
+                    Year 1 CAC savings: $160K (31% reduction)<br>
+                    Single acquisition cost → two revenue streams
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>IP SUMMARY</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>IP Asset</th>
+                            <th>Status</th>
+                            <th>Defensibility</th>
+                            <th>Time to Replicate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Dual Identity Architecture</strong></td>
+                            <td>Patent-pending</td>
+                            <td>High (structural)</td>
+                            <td>24-36 months</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Behavioral Trust Score</strong></td>
+                            <td>Trade secret</td>
+                            <td>High (data moat)</td>
+                            <td>18-24 months</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cross-Promotion Engine</strong></td>
+                            <td>Business method patent</td>
+                            <td>Medium (economic)</td>
+                            <td>18-24 months</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-size: 20px; text-align: center; margin-top: 30px; font-weight: 700; color: #92400e;">
+                    Total Time for Competitor to Replicate ALL IP: 4-5 years minimum
+                </p>
+            </div>
+        </div>
+
+        <!-- 5: BUSINESS MODEL -->
+        <div class="slide">
+            <h1 class="slide-title">BUSINESS MODEL</h1>
+            <h2 class="slide-subtitle" style="text-align: center;">Three Revenue Streams → $112M Year 5</h2>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">26%</div>
+                    <div class="metric-label" style="font-size: 24px; margin-bottom: 20px;">Ágora Premium</div>
+                    <div style="text-align: left; font-size: 16px;">
+                        <strong>$29.7M Year 5</strong><br><br>
+                        <strong>Free Tier (95%):</strong> Full features<br>
+                        <strong>Premium ($5/mo):</strong> Advanced search, analytics, verified badge<br><br>
+                        <strong>Conversion:</strong> 3% → 9%
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-value">61%</div>
+                    <div class="metric-label" style="font-size: 24px; margin-bottom: 20px;">World Boulevard</div>
+                    <div style="text-align: left; font-size: 16px;">
+                        <strong>$68.4M Year 5</strong><br><br>
+                        <strong>Standard:</strong> $15/mo (70%)<br>
+                        <strong>Professional:</strong> $50/mo (25%)<br>
+                        <strong>Enterprise:</strong> $150/mo (5%)<br>
+                        <strong>+ Transaction fees:</strong> 2.5%
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-value">13%</div>
+                    <div class="metric-label" style="font-size: 24px; margin-bottom: 20px;">Enterprise/White-Label</div>
+                    <div style="text-align: left; font-size: 16px;">
+                        <strong>$14M Year 5</strong><br><br>
+                        <strong>Target:</strong> Chambers of Commerce, Professional Associations<br><br>
+                        <strong>Pricing:</strong> $10K-$50K annually
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="slide-subtitle">UNIT ECONOMICS (Validated)</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Year 1</th>
+                        <th>Year 5</th>
+                        <th>Benchmark</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>CAC</strong></td>
+                        <td>$15</td>
+                        <td>$12</td>
+                        <td>LinkedIn: $75 ✅</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LTV</strong></td>
+                        <td>$48</td>
+                        <td>$58</td>
+                        <td>LinkedIn: $180</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LTV:CAC</strong></td>
+                        <td>3.2:1</td>
+                        <td>4.8:1</td>
+                        <td>Healthy >3:1 ✅</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gross Margin</strong></td>
+                        <td>78%</td>
+                        <td>85%</td>
+                        <td>SaaS: 70-80% ✅</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Monthly Churn</strong></td>
+                        <td>5%</td>
+                        <td>2.5%</td>
+                        <td>SaaS: 5-7% ✅</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="solution-section" style="text-align: center;">
+                <h3 style="font-size: 32px; margin-bottom: 20px;">PROFITABLE BY MONTH 14 (Year 2, Q2)</h3>
+            </div>
+        </div>
+
+        <!-- 6: GO-TO-MARKET -->
+        <div class="slide">
+            <h1 class="slide-title">GO-TO-MARKET STRATEGY</h1>
+            <h2 class="slide-subtitle" style="text-align: center;">Geographic Seeding → Viral → Scale</h2>
+            <p style="font-size: 20px; text-align: center; margin: 30px 0;">
+                <strong>Strategy:</strong> One city at a time (network density beats spread)
+            </p>
+
+            <div class="highlight-box">
+                <h3 style="font-size: 28px;">YEAR 1: TORONTO/GTA (35,000 Users)</h3>
+
+                <div style="margin: 30px 0;">
+                    <h4 style="font-size: 22px; color: #1e3c72; margin-bottom: 15px;">Phase 1: Months 1-2 (Soft Launch - 500 users)</h4>
+                    <ul>
+                        <li>Activate 250 waitlist signups</li>
+                        <li>40 businesses (personal visit)</li>
+                        <li>3 founder-led meetups</li>
+                    </ul>
+                    <p style="font-weight: 600; margin-top: 10px;">Budget: $15K | CAC: $30</p>
+                </div>
+
+                <div style="margin: 30px 0;">
+                    <h4 style="font-size: 22px; color: #1e3c72; margin-bottom: 15px;">Phase 2: Months 3-4 (Public Launch - 5,000 users)</h4>
+                    <ul>
+                        <li>Guerrilla marketing (50 cafés, QR codes)</li>
+                        <li>10 micro-influencers ($500 each)</li>
+                        <li>PR push (BlogTO, Toronto Star, CBC)</li>
+                    </ul>
+                    <p style="font-weight: 600; margin-top: 10px;">Budget: $40K | CAC: $8</p>
+                </div>
+
+                <div style="margin: 30px 0;">
+                    <h4 style="font-size: 22px; color: #1e3c72; margin-bottom: 15px;">Phase 3: Months 5-8 (Viral - 18,000 users)</h4>
+                    <ul>
+                        <li>Referral program (invite 3 → 3 months free)</li>
+                        <li>Gamification (badges, leaderboards)</li>
+                        <li>10 "Digital to Real" meetups</li>
+                    </ul>
+                    <p style="font-weight: 600; margin-top: 10px;">Budget: $70K | CAC: $5.40</p>
+                </div>
+
+                <div style="margin: 30px 0;">
+                    <h4 style="font-size: 22px; color: #1e3c72; margin-bottom: 15px;">Phase 4: Months 9-12 (Paid Scale - 35,000 users)</h4>
+                    <ul>
+                        <li>Meta Ads: $120K (video testimonials)</li>
+                        <li>Google Local: $80K ("accountant near me Toronto")</li>
+                        <li>TikTok: $50K (anti-algorithm message)</li>
+                    </ul>
+                    <p style="font-weight: 600; margin-top: 10px;">Budget: $315K | CAC: $18.50</p>
+                </div>
+
+                <div style="text-align: center; padding: 30px; background: white; border-radius: 12px; margin-top: 30px;">
+                    <p style="font-size: 28px; font-weight: 700; color: #22c55e;">
+                        Total Year 1: $440K marketing → 35,000 users → $12.57 avg CAC
+                    </p>
+                </div>
+            </div>
+
+            <div class="solution-section">
+                <h3 style="font-size: 28px; margin-bottom: 20px;">YEAR 2-5: MULTI-CITY EXPANSION</h3>
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <span class="stat-number" style="font-size: 42px;">4</span>
+                        <span class="stat-description">Cities Year 2<br>180K users</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" style="font-size: 42px;">10</span>
+                        <span class="stat-description">Cities Year 3<br>650K users</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" style="font-size: 42px;">25+</span>
+                        <span class="stat-description">Cities Year 5<br>5.5M users</span>
+                    </div>
+                </div>
+                <p style="font-size: 20px; text-align: center; margin-top: 30px; font-weight: 600;">
+                    Playbook: Repeat proven Toronto model
+                </p>
+            </div>
+        </div>
+
+        <!-- 7: COMPETITION -->
+        <div class="slide">
+            <h1 class="slide-title">COMPETITIVE LANDSCAPE</h1>
+            <p style="font-size: 22px; text-align: center; margin-bottom: 40px; line-height: 1.8;">
+                We're not competing to replace existing platforms.<br>
+                We're <strong>filling the gaps</strong> they leave behind.
+            </p>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h3 style="color: #1e3c72; margin-bottom: 15px;">LinkedIn</h3>
+                    <p style="font-size: 16px; margin-bottom: 15px;"><strong>What they do well:</strong></p>
+                    <ul style="text-align: left; font-size: 14px;">
+                        <li>Global professional networking</li>
+                        <li>Strong recruiter ecosystem</li>
+                        <li>B2B sales leads</li>
+                    </ul>
+                    <p style="margin-top: 20px; padding: 15px; background: #dcfce7; border-radius: 8px; font-weight: 600;">
+                        Gap We Fill:<br>Local proximity networking
+                    </p>
+                </div>
+
+                <div class="metric-card">
+                    <h3 style="color: #1e3c72; margin-bottom: 15px;">Yelp / Google Maps</h3>
+                    <p style="font-size: 16px; margin-bottom: 15px;"><strong>What they do well:</strong></p>
+                    <ul style="text-align: left; font-size: 14px;">
+                        <li>Excellent business discovery</li>
+                        <li>Strong review ecosystem</li>
+                        <li>Local SEO dominance</li>
+                    </ul>
+                    <p style="margin-top: 20px; padding: 15px; background: #dcfce7; border-radius: 8px; font-weight: 600;">
+                        Gap We Fill:<br>Direct owner communication
+                    </p>
+                </div>
+
+                <div class="metric-card">
+                    <h3 style="color: #1e3c72; margin-bottom: 15px;">Facebook</h3>
+                    <p style="font-size: 16px; margin-bottom: 15px;"><strong>What they do well:</strong></p>
+                    <ul style="text-align: left; font-size: 14px;">
+                        <li>Social communities</li>
+                        <li>Groups for local organizing</li>
+                        <li>3B+ users globally</li>
+                    </ul>
+                    <p style="margin-top: 20px; padding: 15px; background: #dcfce7; border-radius: 8px; font-weight: 600;">
+                        Gap We Fill:<br>Professional verification + unified trust
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="slide-subtitle">STRUCTURAL REASON WHY IT IS DIFFICULT TO COPY US</h2>
+
+            <div class="problem-section">
+                <h3 style="font-size: 22px; margin-bottom: 15px;">LinkedIn (Microsoft)</h3>
+                <p style="font-size: 18px; line-height: 1.8;">
+                    <strong>Why They Can't Pivot to Local:</strong>
+                </p>
+                <ul>
+                    <li>Architecture global-first (no geolocation indexes)</li>
+                    <li>Rebuilding database = 24+ months + risk to core product</li>
+                    <li>Cannibalization risk (recruiter revenue depends on global reach)</li>
+                    <li>Microsoft paid $26B for global network (can't abandon)</li>
+                </ul>
+                <p style="margin-top: 20px; font-size: 18px; font-weight: 600;">
+                    Timeline IF They Tried: 24-36 months minimum
+                </p>
+            </div>
+
+            <div class="problem-section">
+                <h3 style="font-size: 22px; margin-bottom: 15px;">Facebook/Meta</h3>
+                <p style="font-size: 18px; line-height: 1.8;">
+                    <strong>Why They Can't Pivot to Professional:</strong>
+                </p>
+                <ul>
+                    <li>Business model = ads (98% of revenue) - can't remove</li>
+                    <li>User trust damaged (data privacy scandals)</li>
+                    <li>Already tried and failed: Facebook for Work, Facebook Shopping</li>
+                    <li>Regulatory scrutiny (every move watched)</li>
+                </ul>
+                <p style="margin-top: 20px; font-size: 18px; font-weight: 600;">
+                    Conclusion: Reputation too damaged for professional credibility
+                </p>
+            </div>
+
+            <div class="solution-section">
+                <h3 style="font-size: 24px; margin-bottom: 20px; text-align: center;">OUR ADVANTAGES (Why We Win)</h3>
+                <ol style="font-size: 18px; line-height: 2;">
+                    <li><strong>First-Mover:</strong> No player owns "Unified Local Professional Commerce"</li>
+                    <li><strong>Architectural Advantage:</strong> Built dual-identity from Day 1</li>
+                    <li><strong>Founder Credibility:</strong> Physician + mental health expertise</li>
+                    <li><strong>Capital Efficiency:</strong> Built with $0 (vs. Nextdoor $18M)</li>
+                    <li><strong>Regulatory Tailwind:</strong> Ethical alternative governments want</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- 8: PROJECTIONS -->
+        <div class="slide">
+            <h1 class="slide-title">5-YEAR FINANCIAL PROJECTIONS</h1>
+
+            <table class="financial-table">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Cities</th>
+                        <th>Users</th>
+                        <th>Businesses</th>
+                        <th>Revenue</th>
+                        <th>Net Profit</th>
+                        <th>Cumulative</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1</strong></td>
+                        <td>1</td>
+                        <td>35K</td>
+                        <td>1.2K</td>
+                        <td>$186K</td>
+                        <td>-$809K</td>
+                        <td>-$809K</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2</strong></td>
+                        <td>4</td>
+                        <td>180K</td>
+                        <td>6K</td>
+                        <td>$3.0M</td>
+                        <td style="color: #22c55e; font-weight: 700;">+$1.7M ✅</td>
+                        <td style="color: #22c55e; font-weight: 700;">+$891K ✅</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3</strong></td>
+                        <td>10</td>
+                        <td>650K</td>
+                        <td>32K</td>
+                        <td>$13.8M</td>
+                        <td>+$9.6M</td>
+                        <td>+$10.5M</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4</strong></td>
+                        <td>18</td>
+                        <td>2.1M</td>
+                        <td>85K</td>
+                        <td>$44.1M</td>
+                        <td>+$33.8M</td>
+                        <td>+$44.3M</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5</strong></td>
+                        <td>25+</td>
+                        <td>5.5M</td>
+                        <td>150K</td>
+                        <td><strong>$112.1M</strong></td>
+                        <td><strong>+$91.1M</strong></td>
+                        <td><strong>+$135.4M</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="solution-section" style="text-align: center;">
+                <h3 style="font-size: 36px; margin-bottom: 20px;">PROFITABLE BY MONTH 14</h3>
+            </div>
+
+            <h2 class="slide-subtitle">VALIDATION (Bottom-Up)</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h3 style="color: #1e3c72; margin-bottom: 15px;">User Penetration (Toronto)</h3>
+                    <ul style="text-align: left; font-size: 16px;">
+                        <li>Metro population: 6.4M</li>
+                        <li>Target Year 5: 220K users</li>
+                        <li>Penetration: 3.4%</li>
+                        <li>LinkedIn Toronto: 18%</li>
+                    </ul>
+                    <p style="margin-top: 20px; font-weight: 700; color: #22c55e; font-size: 18px;">
+                        We're targeting 1/5 of LinkedIn ✅
+                    </p>
+                </div>
+
+                <div class="metric-card">
+                    <h3 style="color: #1e3c72; margin-bottom: 15px;">Business Penetration (Toronto)</h3>
+                    <ul style="text-align: left; font-size: 16px;">
+                        <li>Toronto SMBs: ~180K</li>
+                        <li>Target: 6,000 businesses</li>
+                        <li>Penetration: 3.3%</li>
+                        <li>Yelp Toronto: 25%</li>
+                    </ul>
+                    <p style="margin-top: 20px; font-weight: 700; color: #22c55e; font-size: 18px;">
+                        We're targeting 1/7 of Yelp ✅
+                    </p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="font-size: 28px; margin-bottom: 30px;">INVESTOR RETURNS</h3>
+
+                <div style="margin: 20px 0; padding: 25px; background: white; border-radius: 12px;">
+                    <h4 style="font-size: 22px; color: #1e3c72; margin-bottom: 15px;">BASE CASE (100%)</h4>
+                    <p style="font-size: 18px; line-height: 2;">
+                        Year 5: $112M revenue, $91M profit<br>
+                        Exit: $900M (8x) <br>
+                        <strong style="font-size: 24px; color: #22c55e;">Your $1.5M → $135M (90x in 5 years)</strong><br>
+                        <strong style="font-size: 20px;">IRR: 151% annually</strong>
+                    </p>
+                </div>
+
+                <div style="margin: 20px 0; padding: 25px; background: white; border-radius: 12px;">
+                    <h4 style="font-size: 22px; color: #1e3c72; margin-bottom: 15px;">BEAR CASE (50%)</h4>
+                    <p style="font-size: 18px; line-height: 2;">
+                        Year 5: $56M revenue, $40M profit<br>
+                        Exit: $336M (6x)<br>
+                        <strong style="font-size: 22px; color: #22c55e;">Your $1.5M → $50M (33x)</strong><br>
+                        IRR: 123% annually
+                    </p>
+                </div>
+
+                <div style="margin: 20px 0; padding: 25px; background: white; border-radius: 12px;">
+                    <h4 style="font-size: 22px; color: #1e3c72; margin-bottom: 15px;">BULL CASE (150%)</h4>
+                    <p style="font-size: 18px; line-height: 2;">
+                        Year 5: $168M revenue, $145M profit<br>
+                        Exit: $1.68B (10x)<br>
+                        <strong style="font-size: 24px; color: #22c55e;">Your $1.5M → $252M (168x)</strong><br>
+                        IRR: 141% annually
+                    </p>
+                </div>
+
+                <p style="font-size: 22px; text-align: center; margin-top: 30px; font-weight: 700; color: #92400e;">
+                    Even Bear Case = 33x in 5 years (123% IRR)
+                </p>
+            </div>
+        </div>
+
+        <!-- 9: TEAM -->
+        <div class="slide">
+            <h1 class="slide-title">THE TEAM</h1>
+            <h2 class="slide-subtitle" style="text-align: center;">Capital-Efficient Executors</h2>
+
+            <div class="team-section">
+                <div class="team-member">
+                    <div style="font-size: 64px; margin-bottom: 20px;">👨‍⚕️</div>
+                    <h3>Dr. Juan de J. Sanchez</h3>
+                    <h4>Founder & CEO</h4>
+                    <p>
+                        <strong>Background:</strong><br>
+                        • Physician (Colombia)<br>
+                        • Master's Mental Health<br>
+                        • Immigrant: Colombia → Canada (2016)<br><br>
+
+                        <strong>Why He's The Right Founder:</strong><br>
+                        • Understands behavioral science<br>
+                        • Medical background = institutional trust<br>
+                        • Lived the problem (local networking challenges)<br>
+                        • Built production platform in 9 months with $0
+                    </p>
+                </div>
+
+                <div class="team-member">
+                    <div style="font-size: 64px; margin-bottom: 20px;">📈</div>
+                    <h3>Allan Viquez</h3>
+                    <h4>VP Marketing & Operations</h4>
+                    <p>
+                        <strong>Background:</strong><br>
+                        • Marketing Expert (10+ years digital)<br>
+                        • Costa Rican → Canada immigrant<br>
+                        • Multilingual (English, Spanish, French, Italian, Portuguese, Catalan)<br><br>
+
+                        <strong>Why He's Essential:</strong><br>
+                        • North American + LatAm market knowledge<br>
+                        • Growth playbooks (SEO, paid ads, viral loops)<br>
+                        • Execution-focused (gets things done)
+                    </p>
+                </div>
+            </div>
+
+            <div class="solution-section">
+                <h3 style="font-size: 28px; margin-bottom: 20px; text-align: center;">WHY THIS TEAM WINS</h3>
+                <ol style="font-size: 18px; line-height: 2;">
+                    <li><strong>OUR ACCOMPLISHMENTS:</strong> Built what took Nextdoor $18M + 3 years, with $0 in 9 months</li>
+                    <li><strong>Capital-Efficient Execution:</strong> Asking 1/12th to achieve 10x traction</li>
+                    <li><strong>Domain Experts:</strong> Healthcare + Marketing (not just tech entrepreneurs)</li>
+                    <li><strong>Moral Authority:</strong> Physician with mental health expertise can speak credibly about ethical design</li>
+                </ol>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="font-size: 28px; margin-bottom: 20px;">TEAM WE'LL BUILD (With $1.5M)</h3>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; font-size: 18px;">
+                    <div>• VP Growth ($100K)</div>
+                    <div>• Full-Stack Developer ($75K)</div>
+                    <div>• AI/ML Engineer ($75K)</div>
+                    <div>• Community Manager ($45K)</div>
+                    <div>• BDR ($45K)</div>
+                    <div>• Customer Success ($50K)</div>
+                </div>
+                <p style="font-size: 20px; text-align: center; margin-top: 30px; font-weight: 700;">
+                    Year 1 Team: 8 people (lean, execution-focused)
+                </p>
+            </div>
+        </div>
+
+        <!-- 10: THE ASK -->
+        <div class="slide">
+            <h1 class="slide-title">THE ASK</h1>
+
+            <div class="cta-section">
+                <h2>$1.5M @ $10M POST-MONEY</h2>
+                <p style="font-size: 32px; font-weight: 700;">15% EQUITY</p>
+            </div>
+
+            <h2 class="slide-subtitle">USE OF FUNDS</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">40%</div>
+                    <div class="metric-label">$600K: TEAM</div>
+                    <p style="font-size: 16px; margin-top: 15px; text-align: left;">
+                        VP Growth, Developers, Community, Founders (first salaries), Recruiting
+                    </p>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-value">35%</div>
+                    <div class="metric-label">$525K: MARKETING</div>
+                    <p style="font-size: 16px; margin-top: 15px; text-align: left;">
+                        Paid ads ($250K), PR ($50K), Influencers ($75K), Events ($60K)
+                    </p>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-value">15%</div>
+                    <div class="metric-label">$225K: TECHNOLOGY</div>
+                    <p style="font-size: 16px; margin-top: 15px; text-align: left;">
+                        Hosting ($60K), APIs ($30K), Security ($25K), Contractors ($100K)
+                    </p>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-value">10%</div>
+                    <div class="metric-label">$150K: LEGAL & OPS</div>
+                    <p style="font-size: 16px; margin-top: 15px; text-align: left;">
+                        Patents ($60K), Incorporation ($15K), Legal ($30K), Accounting
+                    </p>
+                </div>
+            </div>
+
+            <div class="solution-section">
+                <h3 style="font-size: 28px; margin-bottom: 20px; text-align: center;">WHAT $1.5M BUYS YOU</h3>
+                <ul style="font-size: 20px; line-height: 2;">
+                    <li>✅ 12-month runway (to profitability)</li>
+                    <li>✅ 35,000 users, 1,200 businesses (proof of scale)</li>
+                    <li>✅ 4-city expansion ready (Month 18)</li>
+                    <li>✅ $3M revenue, $1.7M profit Year 2 (de-risked Series A)</li>
+                    <li>✅ Defensible moat (Trust Score data, network effects, IP protection)</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <h3 style="font-size: 28px; margin-bottom: 20px; text-align: center;">WHY INVEST NOW?</h3>
+                <ol style="font-size: 20px; line-height: 2;">
+                    <li><strong>Product Done ✅</strong> Not paying to build (90% lower risk)</li>
+                    <li><strong>Execution Proven ✅</strong> Built $5M platform with $0</li>
+                    <li><strong>Market Ready ✅</strong> Post-pandemic demand + regulatory tailwind</li>
+                    <li><strong>Competition Complementary ✅</strong> Filling gaps, not replacing giants</li>
+                    <li><strong>Path Clear ✅</strong> Profitable Month 14 = optionality</li>
+                    <li><strong>IP Protected ✅</strong> Patents pending, moats defensible</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- FINAL: THE CLOSE -->
+        <div class="slide">
+            <div class="cta-section" style="padding: 80px 60px;">
+                <h1 style="font-size: 56px; margin-bottom: 40px;">OUR ACCOMPLISHMENTS</h1>
+                <p style="font-size: 28px; margin: 30px 0;">
+                    Built what took Nextdoor $18M + 3 years.
+                </p>
+                <p style="font-size: 28px; margin: 30px 0;">
+                    With $0 and 9 months.
+                </p>
+                <p style="font-size: 28px; margin: 30px 0;">
+                    As non-programmers.
+                </p>
+
+                <div style="height: 60px;"></div>
+
+                <h2 style="font-size: 48px; margin: 40px 0;">NOW WE'RE ASKING FOR 1/12TH</h2>
+                <p style="font-size: 24px; margin: 30px 0;">
+                    To achieve 10x their traction.<br>
+                    To turn profitable in 14 months.<br>
+                    To build the bridge between professional networking and local commerce.
+                </p>
+
+                <div style="height: 60px;"></div>
+
+                <h2 style="font-size: 48px; margin: 40px 0;">THIS ISN'T A BET ON:</h2>
+                <p style="font-size: 24px; margin: 20px 0;">
+                    ❌ Can they build it? <strong>(It's built)</strong><br>
+                    ❌ Will people use it? <strong>(250 waitlist + 40 businesses)</strong><br>
+                    ❌ Can they execute? <strong>(Look what we did with $0)</strong>
+                </p>
+
+                <div style="height: 60px;"></div>
+
+                <h2 style="font-size: 48px; margin: 40px 0;">THIS IS A BET ON:</h2>
+                <p style="font-size: 24px; margin: 20px 0;">
+                    ✅ Is there a gap between LinkedIn and Yelp? <strong>(Clearly yes)</strong><br>
+                    ✅ Can we fill it better than anyone? <strong>(Our IP proves yes)</strong><br>
+                    ✅ Will we execute with capital? <strong>(Track record says yes)</strong>
+                </p>
+
+                <div style="height: 80px;"></div>
+
+                <h1 style="font-size: 72px; font-weight: 800; margin: 60px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+                    WHY THIS IS A SAFE SEED INVESTMENT?
+                </h1>
+
+                <div style="font-size: 28px; line-height: 2; margin: 40px 0;">
+                    <strong>Product:</strong> ✅ Built<br>
+                    <strong>IP:</strong> ✅ Protected<br>
+                    <strong>Team:</strong> ✅ Proven<br>
+                    <strong>Market:</strong> ✅ Ready<br>
+                    <strong>Moats:</strong> ✅ Defensible<br>
+                    <strong>Path:</strong> ✅ Clear
+                </div>
+
+                <div style="height: 80px;"></div>
+
+                <h1 style="font-size: 80px; font-weight: 800; margin: 60px 0;">Are you in?</h1>
+
+                <div class="contact-info" style="margin-top: 60px;">
+                    <div style="font-size: 28px; font-weight: 700; margin-bottom: 30px;">
+                        Dr. Juan de J. Sanchez | Founder & CEO<br>
+                        Allan Viquez | VP Marketing & Operations
+                    </div>
+                    <div style="font-size: 24px;">
+                        📧 Humanbiblio@gmail.com<br>
+                        📱 (289) 990-0450<br>
+                        📍 St. Catharines, Ontario, Canada
+                    </div>
+                </div>
+
+                <div style="margin-top: 60px; font-size: 26px; font-style: italic;">
+                    Let's build the bridge between professional networking<br>and local commerce—together.
+                </div>
+
+                <button class="download-btn" onclick="window.print()">
+                    📥 Download / Print This Presentation
+                </button>
+            </div>
+        </div>
+
+        <div style="text-align: center; padding: 40px; color: white; font-size: 16px;">
+            <p>© 2025 HUMANBIBLIO - The Trust Economy Platform</p>
+            <p style="margin-top: 10px; font-style: italic;">Confidential and proprietary. Distribution requires written authorization.</p>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+
+            const observerOptions = {
+                threshold: 0.3,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            slides.forEach(slide => {
+                observer.observe(slide);
+            });
+        });
+    </script>
+</body>
+</html>

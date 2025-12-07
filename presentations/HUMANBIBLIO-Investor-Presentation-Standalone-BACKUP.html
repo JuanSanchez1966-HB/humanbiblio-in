@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HUMANBIBLIO - Investor Presentation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .presentation-container {
+      width: 100%;
+      max-width: 1400px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+
+    .controls {
+      background: rgba(0,0,0,0.9);
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+
+    .controls button {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .controls button:hover:not(:disabled) {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    .controls button:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .slide-content {
+      padding: 60px;
+      min-height: 700px;
+      overflow-y: auto;
+    }
+
+    .slide {
+      display: none;
+    }
+
+    .slide.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      color: #1a202c;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .gradient-box {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 40px;
+      border-radius: 16px;
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 30px 0;
+    }
+
+    .info-card {
+      background: #f7fafc;
+      padding: 30px;
+      border-radius: 12px;
+      border-left: 4px solid #667eea;
+    }
+
+    .info-card h4 {
+      color: #2d3748;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+
+    .info-card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .info-card li {
+      padding: 8px 0;
+      color: #4a5568;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 30px 0;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    th {
+      background: #2d3748;
+      color: white;
+      font-weight: 600;
+    }
+
+    tr:hover {
+      background: #f7fafc;
+    }
+
+    .highlight-box {
+      background: #edf2f7;
+      padding: 30px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+
+    .logo-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .logo-container img {
+      max-height: 160px;
+      width: auto;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .progress-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .dot.active {
+      background: white;
+      width: 40px;
+      border-radius: 6px;
+    }
+
+    .competitive-table {
+      font-size: 0.9rem;
+    }
+
+    .competitive-table .check {
+      color: #48bb78;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .competitive-table .cross {
+      color: #cbd5e0;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 768px) {
+      .slide-content {
+        padding: 30px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      .controls {
+        display: none;
+      }
+
+      .slide {
+        display: block;
+        page-break-after: always;
+      }
+
+      .slide-content {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="presentation-container">
+    <div class="controls">
+      <div>
+        <button onclick="previousSlide()" id="prevBtn">← Previous</button>
+        <button onclick="nextSlide()" id="nextBtn">Next →</button>
+      </div>
+      <div>
+        <span id="slideCounter">Slide 1 of 10</span>
+      </div>
+      <div>
+        <button onclick="window.print()">Print PDF</button>
+      </div>
+    </div>
+
+    <div class="slide-content">
+      <!-- SLIDE 1: TITLE -->
+      <div class="slide active" data-slide="1">
+        <div class="logo-container">
+          <img src="https://i.imgur.com/TzZrbxK.png" alt="HUMANBIBLIO Logo" onerror="this.style.display='none'">
+        </div>
+        <h1 style="text-align: center; color: #667eea; margin-top: 20px;">HUMANBIBLIO</h1>
+        <h2 style="text-align: center; color: #4a5568; font-weight: 300;">The Trust Economy: Where Human Connection Replaces Algorithmic Manipulation</h2>
+
+        <div class="gradient-box" style="margin-top: 50px;">
+          <h3 style="color: white; margin-bottom: 30px;">Three Integrated Platforms. One Mission.</h3>
+          <div class="info-grid">
+            <div style="background: rgba(255,255,255,0.2); padding: 20px; border-radius: 12px;">
+              <h4 style="color: white;">ÁGORA</h4>
+              <p style="color: rgba(255,255,255,0.9);">Professional + Social Networking</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.2); padding: 20px; border-radius: 12px;">
+              <h4 style="color: white;">World Boulevard</h4>
+              <p style="color: rgba(255,255,255,0.9);">Local Business Discovery</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.2); padding: 20px; border-radius: 12px;">
+              <h4 style="color: white;">You Are Not Alone</h4>
+              <p style="color: rgba(255,255,255,0.9);">Community Projects</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 50px; text-align: center;">
+          <h3 style="color: #2d3748;">Dr. Juan de J. Sanchez, Founder & CEO</h3>
+          <p style="color: #718096; font-size: 1.2rem;">Physician • Mental Health Specialist</p>
+          <div style="margin-top: 30px; color: #4a5568;">
+            <p>📧 Humanbiblio@gmail.com</p>
+            <p>📱 (289) 990-0450</p>
+            <p>📍 St. Catharines, Ontario, Canada</p>
+          </div>
+        </div>
+
+        <div class="stat-grid" style="margin-top: 50px;">
+          <div class="stat-card">
+            <div style="font-size: 1rem; opacity: 0.9;">Seeking</div>
+            <div class="stat-number">$1.5M</div>
+            <div style="font-size: 0.9rem; opacity: 0.8;">Seed Round</div>
+          </div>
+          <div class="stat-card">
+            <div style="font-size: 1rem; opacity: 0.9;">Valuation</div>
+            <div class="stat-number">$10M</div>
+            <div style="font-size: 0.9rem; opacity: 0.8;">Post-Money</div>
+          </div>
+          <div class="stat-card">
+            <div style="font-size: 1rem; opacity: 0.9;">Equity Offered</div>
+            <div class="stat-number">15%</div>
+            <div style="font-size: 0.9rem; opacity: 0.8;">Of Company</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2: PROBLEM -->
+      <div class="slide" data-slide="2">
+        <h1 style="color: #e53e3e;">THE PROBLEM</h1>
+        <h2 style="color: #2d3748;">The Broken Economics of Social Media</h2>
+
+        <div class="highlight-box" style="background: #fff5f5; border-left: 4px solid #e53e3e;">
+          <h3 style="color: #e53e3e;">Problem #1: The Attention Economy Infrastructure</h3>
+          <p style="font-size: 1.2rem; margin: 20px 0; color: #2d3748;"><strong>Current Model:</strong> Capture attention → Sell to advertisers → Maximize engagement (addiction) → Repeat</p>
+          <div class="info-grid">
+            <div>
+              <p style="color: #4a5568;">💰 <strong>$200B+ spent annually</strong> manipulating users through targeted ads</p>
+            </div>
+            <div>
+              <p style="color: #4a5568;">😔 <strong>2.4 billion people</strong> report social media harms their mental health</p>
+            </div>
+            <div>
+              <p style="color: #4a5568;">🚫 <strong>73% of users</strong> distrust platforms with their data</p>
+            </div>
+            <div>
+              <p style="color: #4a5568;">⚖️ <strong>Governments worldwide</strong> preparing regulations (EU Digital Services Act, Canada Bill C-27)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight-box" style="background: #fffaf0; border-left: 4px solid #ed8936; margin-top: 30px;">
+          <h3 style="color: #ed8936;">Problem #2: Local Economies Collapsing</h3>
+          <p style="color: #2d3748; margin-bottom: 20px;">Despite having "social networks," local communities are more disconnected than ever:</p>
+          <ul style="list-style: none; color: #4a5568; font-size: 1.1rem;">
+            <li>❌ Can't find local professionals (LinkedIn shows people 5,000km away)</li>
+            <li>❌ Can't support local businesses (Google Maps doesn't enable relationships)</li>
+            <li>❌ Can't organize communities (Nextdoor is toxic, no action tools)</li>
+            <li>❌ Can't fund local projects (GoFundMe is for strangers, not neighbors)</li>
+          </ul>
+        </div>
+
+        <div class="highlight-box" style="background: #f7fafc; border-left: 4px solid #4a5568; margin-top: 30px;">
+          <h3 style="color: #2d3748;">Problem #3: The Trust Collapse</h3>
+          <ul style="list-style: none; color: #4a5568; font-size: 1.1rem;">
+            <li>✗ Manipulative algorithms designed for outrage, not connection</li>
+            <li>✗ Intrusive advertising disguised as social content</li>
+            <li>✗ Data sold without consent to highest bidder</li>
+            <li>✗ Mental health crisis causally linked to platform design</li>
+          </ul>
+        </div>
+
+        <div class="gradient-box" style="margin-top: 40px;">
+          <h3 style="font-size: 2rem; color: white;">THE INSIGHT</h3>
+          <p style="font-size: 1.5rem; margin: 20px 0;">You can't fix the attention economy by tweaking features.</p>
+          <p style="font-size: 1.3rem; margin: 20px 0;">You have to build a fundamentally different economic infrastructure.</p>
+          <p style="font-size: 2rem; font-weight: bold; margin-top: 30px;">That's what we did.</p>
+        </div>
+      </div>
+
+      <!-- SLIDE 3: SOLUTION -->
+      <div class="slide" data-slide="3">
+        <h1 style="color: #3182ce;">THE SOLUTION</h1>
+        <h2 style="color: #2d3748;">A New Economic Infrastructure: The Trust Economy</h2>
+
+        <div class="highlight-box" style="background: linear-gradient(135deg, #ebf4ff 0%, #e9d8fd 100%); border: 2px solid #3182ce;">
+          <h3 style="color: #2d3748; text-align: center; margin-bottom: 30px;">Replace the Infrastructure, Not Improve It</h3>
+          <div class="stat-grid">
+            <div style="background: #fff5f5; padding: 20px; border-radius: 12px; text-align: center;">
+              <h4 style="color: #e53e3e;">Old Model (Them)</h4>
+              <p style="color: #4a5568;">Revenue from selling user attention</p>
+            </div>
+            <div></div>
+            <div style="background: #f0fff4; padding: 20px; border-radius: 12px; text-align: center;">
+              <h4 style="color: #38a169;">New Model (Us)</h4>
+              <p style="color: #4a5568;">Revenue from delivering user value</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-grid" style="margin-top: 50px;">
+          <div class="info-card" style="border-left-color: #3182ce; background: #ebf8ff;">
+            <h4 style="color: #2c5282;">ÁGORA</h4>
+            <p style="margin-bottom: 15px; color: #2d3748;"><em>Professional + Social Networking That Works Locally</em></p>
+            <ul>
+              <li>✅ Proximity-based search (within 5km)</li>
+              <li>✅ Direct communication: no algorithm interference</li>
+              <li>✅ ZERO ADVERTISING in social feeds</li>
+              <li>✅ Anti-addiction design</li>
+              <li>✅ Meaningful metrics, not vanity "likes"</li>
+            </ul>
+          </div>
+
+          <div class="info-card" style="border-left-color: #805ad5; background: #faf5ff;">
+            <h4 style="color: #553c9a;">World Boulevard</h4>
+            <p style="margin-bottom: 15px; color: #2d3748;"><em>Discover Local Businesses + Connect With Owners</em></p>
+            <ul>
+              <li>✅ Proximity discovery by distance</li>
+              <li>✅ Direct owner messaging</li>
+              <li>✅ Integrated commerce: book, order, pay</li>
+              <li>✅ Fair monetization</li>
+              <li>✅ Community integration</li>
+            </ul>
+          </div>
+
+          <div class="info-card" style="border-left-color: #38a169; background: #f0fff4;">
+            <h4 style="color: #22543d;">You Are Not Alone</h4>
+            <p style="margin-bottom: 15px; color: #2d3748;"><em>Fund Community Projects With Your Neighbors</em></p>
+            <ul>
+              <li>✅ Community proposals</li>
+              <li>✅ Hyperlocal crowdfunding</li>
+              <li>✅ Transparent execution tracking</li>
+              <li>✅ Integrated ecosystem</li>
+              <li>✅ Democratic governance</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="gradient-box" style="margin-top: 40px;">
+          <h3 style="color: white; margin-bottom: 20px;">HUMANBIBLIO says:</h3>
+          <p style="font-size: 1.5rem; margin: 10px 0;">"You are not alone."</p>
+          <p style="font-size: 1.5rem; margin: 10px 0;">"Connect with real neighbors."</p>
+          <p style="font-size: 1.5rem; margin: 10px 0;">"Trust and be trusted."</p>
+          <p style="font-size: 1.5rem; margin: 10px 0;">"Do meaningful things together."</p>
+        </div>
+      </div>
+
+      <!-- SLIDE 4: UNDERLYING MAGIC -->
+      <div class="slide" data-slide="4">
+        <h1 style="color: #805ad5;">UNDERLYING MAGIC</h1>
+        <h2 style="color: #2d3748;">Technology That Creates Insurmountable Moats</h2>
+
+        <div class="highlight-box" style="background: #faf5ff; border-left: 4px solid #805ad5;">
+          <h3 style="color: #553c9a;">Defensibility #1: Scalable AI Personality System</h3>
+          <p style="font-size: 1.2rem; color: #2d3748; margin: 20px 0;"><strong>The First Platform That Learns Individual Humans, Not Demographics</strong></p>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
+            <div style="background: white; padding: 20px; border-radius: 12px;">
+              <h4 style="color: #553c9a; margin-bottom: 15px;">Launch: 8 Core AI Personalities</h4>
+              <ul style="list-style: none; color: #4a5568;">
+                <li>🧠 Professional Coach (career guidance)</li>
+                <li>🗺️ Local Explorer (business recommendations)</li>
+                <li>🤝 Community Organizer (project facilitation)</li>
+                <li>🛡️ Wellness Guardian (anti-addiction interventions)</li>
+                <li>👮 Safety Monitor (harassment/scam detection)</li>
+                <li>🌍 Language Mediator (contextual translation)</li>
+                <li>💼 Business Advisor (SMB growth strategies)</li>
+                <li>⚖️ Conflict Resolver (dispute mediation)</li>
+              </ul>
+            </div>
+
+            <div style="background: white; padding: 20px; border-radius: 12px;">
+              <h4 style="color: #3182ce; margin-bottom: 15px;">5-Year Vision: 100+ Profession-Specific AI Profiles</h4>
+              <p style="color: #2d3748; font-weight: bold; margin-bottom: 10px;">Example: "Dr. Sanchez's Pediatric Surgery AI"</p>
+              <ul style="color: #4a5568;">
+                <li>• Understands surgical terminology, ethics, hospital protocols</li>
+                <li>• Can represent Dr. Sanchez when he's in surgery</li>
+                <li>• Triages inquiries: urgent vs. routine</li>
+                <li>• Creates context for patients</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight-box" style="background: #ebf8ff; border-left: 4px solid #3182ce; margin-top: 30px;">
+          <h3 style="color: #2c5282;">Defensibility #2: Cross-Language Expert Communication</h3>
+          <p style="font-size: 1.1rem; color: #2d3748; margin: 15px 0;"><strong>Not translation. Contextual interpretation with professional accuracy.</strong></p>
+          <div style="background: white; padding: 20px; border-radius: 12px; margin-top: 20px;">
+            <p style="color: #2d3748; margin-bottom: 15px;"><strong>Scenario:</strong> Spanish-speaking contractor explaining technical details to English client</p>
+            <ol style="color: #4a5568; margin-left: 20px;">
+              <li>Contractor records: "Necesitamos reemplazar las vigas de carga según el código..."</li>
+              <li>AI identifies: Construction terms + Canadian building codes</li>
+              <li>AI interprets WITH context (not word-for-word)</li>
+              <li>Client hears: "Load-bearing walls require engineered beams per code Section 9.4.2"</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="highlight-box" style="background: #f0fff4; border-left: 4px solid #38a169; margin-top: 30px;">
+          <h3 style="color: #22543d;">Defensibility #3: Proximity-Native Architecture</h3>
+          <p style="font-size: 1.2rem; color: #2d3748; margin: 15px 0;"><strong>Everything happens within 10km</strong></p>
+          <ul style="color: #4a5568; font-size: 1.1rem;">
+            <li>📍 Real-time geolocation</li>
+            <li>🗺️ Distance-based search ("Show accountants within 5km")</li>
+            <li>🏘️ Auto-detect neighborhoods</li>
+            <li>🚶 Walkability scoring ("8-minute walk")</li>
+          </ul>
+          <p style="color: #2d3748; margin-top: 20px; font-weight: bold;">LinkedIn/Facebook can't retrofit—requires ground-up rebuild</p>
+        </div>
+
+        <div class="gradient-box" style="background: linear-gradient(135deg, #e53e3e 0%, #ed8936 100%); margin-top: 40px;">
+          <h3 style="font-size: 2rem; color: white; margin-bottom: 20px;">THE MOAT SUMMARY</h3>
+          <p style="font-size: 1.3rem; margin-bottom: 15px;">Competitors would need 3-4 years minimum to replicate</p>
+          <p style="font-size: 1.2rem;">By then we'll have 5.5M users + 100+ AI personalities + Digital legacy profiles + Profitable operations</p>
+        </div>
+      </div>
+
+      <!-- SLIDE 5: BUSINESS MODEL -->
+      <div class="slide" data-slide="5">
+        <h1 style="color: #38a169;">BUSINESS MODEL</h1>
+        <h2 style="color: #2d3748;">Three Revenue Streams. Clear Path to Profitability.</h2>
+
+        <div class="highlight-box" style="background: linear-gradient(135deg, #f0fff4 0%, #ebf8ff 100%); border: 2px solid #38a169; text-align: center;">
+          <h3 style="color: #2d3748;">We make money by delivering value—not selling attention.</h3>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-card" style="border-left-color: #3182ce; background: #ebf8ff;">
+            <h4 style="color: #2c5282;">Revenue #1: Freemium Users (ÁGORA)</h4>
+            <div style="margin: 15px 0;">
+              <p style="font-weight: bold; color: #2d3748; margin-bottom: 10px;">Free Tier (Always):</p>
+              <ul style="font-size: 0.95rem;">
+                <li>✅ Create profile</li>
+                <li>✅ Search within 10km</li>
+                <li>✅ Direct messaging (unlimited)</li>
+                <li>✅ Voice/video calls (1-to-1)</li>
+              </ul>
+            </div>
+            <div style="margin: 15px 0;">
+              <p style="font-weight: bold; color: #2d3748; margin-bottom: 10px;">Premium ($5/month):</p>
+              <ul style="font-size: 0.95rem;">
+                <li>✨ Advanced search</li>
+                <li>✨ Priority visibility</li>
+                <li>✨ Analytics dashboard</li>
+                <li>✨ Multi-party calls</li>
+              </ul>
+            </div>
+            <div style="background: #bee3f8; padding: 15px; border-radius: 8px; text-align: center; margin-top: 15px;">
+              <p style="font-size: 0.9rem; color: #2c5282;">Target Conversion</p>
+              <p style="font-size: 1.8rem; font-weight: bold; color: #2c5282;">3% → 9%</p>
+              <p style="font-size: 0.8rem; color: #4a5568;">Year 1 to Year 5</p>
+            </div>
+          </div>
+
+          <div class="info-card" style="border-left-color: #805ad5; background: #faf5ff;">
+            <h4 style="color: #553c9a;">Revenue #2: Business Subscriptions (World Boulevard)</h4>
+            <div style="margin: 10px 0;">
+              <p style="font-weight: bold; color: #2d3748;">Standard ($15/mo) - 70%</p>
+              <p style="font-size: 0.9rem; color: #4a5568;">Payment processing, enhanced profile, analytics</p>
+            </div>
+            <div style="margin: 10px 0;">
+              <p style="font-weight: bold; color: #2d3748;">Professional ($50/mo) - 25%</p>
+              <p style="font-size: 0.9rem; color: #4a5568;">Everything + promoted listings, marketing tools</p>
+            </div>
+            <div style="margin: 10px 0;">
+              <p style="font-weight: bold; color: #2d3748;">Enterprise ($150/mo) - 5%</p>
+              <p style="font-size: 0.9rem; color: #4a5568;">Everything + multi-location, API access, custom features</p>
+            </div>
+            <div style="background: #e9d8fd; padding: 15px; border-radius: 8px; text-align: center; margin-top: 15px;">
+              <p style="font-size: 0.9rem; color: #553c9a;">Target Conversion</p>
+              <p style="font-size: 1.8rem; font-weight: bold; color: #553c9a;">50-70%</p>
+              <p style="font-size: 0.8rem; color: #4a5568;">of businesses to paid</p>
+            </div>
+          </div>
+
+          <div class="info-card" style="border-left-color: #ed8936; background: #fffaf0;">
+            <h4 style="color: #c05621;">Revenue #3: Enterprise/White-Label (B2B)</h4>
+            <p style="font-weight: bold; color: #2d3748; margin-bottom: 10px;">License platform to:</p>
+            <ul style="font-size: 0.95rem;">
+              <li>• Chambers of Commerce</li>
+              <li>• Business Associations</li>
+              <li>• Municipal Governments</li>
+              <li>• University Alumni Networks</li>
+              <li>• Professional Associations</li>
+            </ul>
+            <div style="background: #fed7d7; padding: 15px; border-radius: 8px; text-align: center; margin-top: 15px;">
+              <p style="font-size: 0.9rem; color: #c05621;">Pricing</p>
+              <p style="font-size: 1.8rem; font-weight: bold; color: #c05621;">$10K-$50K</p>
+              <p style="font-size: 0.8rem; color: #4a5568;">annually per organization</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight-box" style="margin-top: 40px;">
+          <h4 style="color: #2d3748; margin-bottom: 20px; text-align: center;">Unit Economics (Year 5 Steady State)</h4>
+          <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 15px; text-align: center;">
+            <div>
+              <p style="font-size: 0.9rem; color: #718096;">CAC</p>
+              <p style="font-size: 1.8rem; font-weight: bold; color: #38a169;">$12</p>
+            </div>
+            <div>
+              <p style="font-size: 0.9rem; color: #718096;">LTV</p>
+              <p style="font-size: 1.8rem; font-weight: bold; color: #3182ce;">$58</p>
+            </div>
+            <div>
+              <p style="font-size: 0.9rem; color: #718096;">LTV:CAC</p>
+              <p style="font-size: 1.8rem; font-weight: bold; color: #805ad5;">4.8:1</p>
+            </div>
+            <div>
+              <p style="font-size: 0.9rem; color: #718096;">Gross Margin</p>
+              <p style="font-size: 1.8rem; font-weight: bold; color: #38a169;">85%</p>
+            </div>
+            <div>
+              <p style="font-size: 0.9rem; color: #718096;">Churn</p>
+              <p style="font-size: 1.8rem; font-weight: bold; color: #ed8936;">2.5%</p>
+            </div>
+            <div>
+              <p style="font-size: 0.9rem; color: #718096;">ARPU</p>
+              <p style="font-size: 1.8rem; font-weight: bold; color: #3182ce;">$20/yr</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 6: MARKETING & SALES -->
+      <div class="slide" data-slide="6">
+        <h1 style="color: #3182ce;">MARKETING & SALES</h1>
+        <h2 style="color: #2d3748;">How We Acquire 35,000 Users in Year 1 With $525K</h2>
+
+        <div class="highlight-box" style="background: linear-gradient(135deg, #ebf8ff 0%, #faf5ff 100%); border: 2px solid #3182ce; text-align: center;">
+          <h3 style="color: #2d3748;">Strategy: Geographic Seeding + Viral + Paid Scale</h3>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px;">
+          <div class="info-card" style="border-left-color: #38a169; background: #f0fff4;">
+            <h4 style="color: #22543d;">Phase 1: Geographic Seeding (Months 1-4)</h4>
+            <p style="color: #2d3748; font-weight: bold; margin: 15px 0;">Target City: Guadalajara, Mexico</p>
+            <p style="color: #4a5568; font-size: 0.95rem; margin-bottom: 15px;">5M population, tech-savvy, Spanish-speaking, strong community culture</p>
+            <div style="margin: 15px 0;">
+              <p style="font-weight: bold; color: #2d3748;">Month 1-2: Soft Launch</p>
+              <p style="font-size: 0.9rem; color: #4a5568;">250 waitlist, 40 businesses, $15K budget → 500 users</p>
+            </div>
+            <div style="margin: 15px 0;">
+              <p style="font-weight: bold; color: #2d3748;">Month 3-4: Public Launch</p>
+              <p style="font-size: 0.9rem; color: #4a5568;">Guerrilla marketing, 10 micro-influencers, $40K → 5,000 users</p>
+            </div>
+          </div>
+
+          <div class="info-card" style="border-left-color: #805ad5; background: #faf5ff;">
+            <h4 style="color: #553c9a;">Phase 2: Viral Mechanics (Months 5-8)</h4>
+            <div style="margin: 15px 0;">
+              <p style="font-weight: bold; color: #2d3748;">Referral Incentives:</p>
+              <p style="font-size: 0.9rem; color: #4a5568;">• Invite 3 friends → 3 months Premium free</p>
+              <p style="font-size: 0.9rem; color: #4a5568;">• Invite 10 friends → 12 months Premium free</p>
+            </div>
+            <div style="margin: 15px 0;">
+              <p style="font-weight: bold; color: #2d3748;">Expected Virality: 1.3x</p>
+              <p style="font-size: 0.9rem; color: #4a5568;">Each user brings 1.3 more</p>
+            </div>
+            <div style="margin: 15px 0;">
+              <p style="font-weight: bold; color: #2d3748;">Budget: $70K</p>
+              <p style="font-size: 0.9rem; color: #4a5568;">Goal: 18,000 users (500 → 5K → 18K via viral)</p>
+            </div>
+          </div>
+
+          <div class="info-card" style="border-left-color: #3182ce; background: #ebf8ff;">
+            <h4 style="color: #2c5282;">Phase 3: Paid Acquisition (Months 9-12)</h4>
+            <div style="margin: 15px 0;">
+              <p style="font-weight: bold; color: #2d3748;">Paid Advertising: $250K</p>
+              <p style="font-size: 0.9rem; color: #4a5568;">• Meta Ads: $120K (video testimonials)</p>
+              <p style="font-size: 0.9rem; color: #4a5568;">• Google Local Services: $80K</p>
+              <p style="font-size: 0.9rem; color: #4a5568;">• TikTok Ads: $50K (anti-algorithm message)</p>
+            </div>
+            <div style="margin: 15px 0;">
+              <p style="font-weight: bold; color: #2d3748;">Expected CAC: $13-14</p>
+              <p style="font-size: 0.9rem; color: #4a5568;">Expected Users: 18,000 from paid</p>
+            </div>
+          </div>
+
+          <div class="info-card" style="border-left-color: #ed8936; background: #fffaf0;">
+            <h4 style="color: #c05621;">Phase 4: PR & Thought Leadership</h4>
+            <div style="margin: 15px 0;">
+              <p style="font-weight: bold; color: #2d3748;">Media Strategy: $50K PR agency</p>
+              <p style="font-size: 0.9rem; color: #4a5568;">• Founder op-eds</p>
+              <p style="font-size: 0.9rem; color: #4a5568;">• 10 podcast appearances</p>
+              <p style="font-size: 0.9rem; color: #4a5568;">• 3 conference speaking slots</p>
+            </div>
+            <div style="margin: 15px 0;">
+              <p style="font-weight: bold; color: #2d3748;">Expected: 2,500 users from PR</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight-box" style="margin-top: 40px;">
+          <h4 style="color: #2d3748; margin-bottom: 20px; text-align: center;">Year 1 Marketing Budget</h4>
+          <table class="competitive-table">
+            <thead>
+              <tr>
+                <th>Channel</th>
+                <th style="text-align: right;">Budget</th>
+                <th style="text-align: right;">Users</th>
+                <th style="text-align: right;">CAC</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Organic (referrals, PR)</td>
+                <td style="text-align: right;">$135K</td>
+                <td style="text-align: right;">12,000</td>
+                <td style="text-align: right;">$11.25</td>
+              </tr>
+              <tr>
+                <td>Paid ads</td>
+                <td style="text-align: right;">$250K</td>
+                <td style="text-align: right;">18,000</td>
+                <td style="text-align: right;">$13.90</td>
+              </tr>
+              <tr>
+                <td>Influencers</td>
+                <td style="text-align: right;">$135K</td>
+                <td style="text-align: right;">3,000</td>
+                <td style="text-align: right;">$16.70</td>
+              </tr>
+              <tr>
+                <td>Events/partnerships</td>
+                <td style="text-align: right;">$90K</td>
+                <td style="text-align: right;">2,000</td>
+                <td style="text-align: right;">$45.00</td>
+              </tr>
+              <tr style="background: #ebf8ff; font-weight: bold;">
+                <td>TOTAL</td>
+                <td style="text-align: right;">$525K</td>
+                <td style="text-align: right;">35,000</td>
+                <td style="text-align: right;">$15</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="gradient-box" style="margin-top: 40px;">
+          <p style="font-size: 1.5rem; font-weight: bold;">Year 2-5 Expansion: 4 cities → 10 → 18 → 25+ cities</p>
+          <p style="font-size: 1.2rem; margin-top: 15px;">Proven playbook scales to 5.5M users by Year 5</p>
+        </div>
+      </div>
+
+      <!-- SLIDE 7: COMPETITION -->
+      <div class="slide" data-slide="7">
+        <h1 style="color: #805ad5;">COMPETITION</h1>
+        <h2 style="color: #2d3748;">We're Not Better—We're Different</h2>
+
+        <div class="highlight-box" style="background: linear-gradient(135deg, #faf5ff 0%, #ebf8ff 100%); border: 2px solid #805ad5; text-align: center;">
+          <h3 style="color: #2d3748;">We don't compete in existing categories. We occupy a new one: "Ethical Local"</h3>
+        </div>
+
+        <div style="margin: 40px 0; overflow-x: auto;">
+          <table class="competitive-table" style="width: 100%; font-size: 0.9rem;">
+            <thead>
+              <tr>
+                <th style="text-align: left;">Feature</th>
+                <th style="text-align: center; background: #3182ce; color: white;">HUMANBIBLIO</th>
+                <th style="text-align: center;">LinkedIn</th>
+                <th style="text-align: center;">Facebook</th>
+                <th style="text-align: center;">Nextdoor</th>
+                <th style="text-align: center;">Google Maps</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight: 600;">Professional Networking</td>
+                <td style="text-align: center; background: #f0fff4;" class="check">✅</td>
+                <td style="text-align: center;" class="check">✅</td>
+                <td style="text-align: center;" class="cross">❌</td>
+                <td style="text-align: center;" class="cross">❌</td>
+                <td style="text-align: center;" class="cross">❌</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">Local Commerce</td>
+                <td style="text-align: center; background: #f0fff4;" class="check">✅</td>
+                <td style="text-align: center;" class="cross">❌</td>
+                <td style="text-align: center; color: #d69e2e; font-weight: bold;">Partial</td>
+                <td style="text-align: center;" class="cross">❌</td>
+                <td style="text-align: center; color: #d69e2e; font-weight: bold;">Partial</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">Community Projects</td>
+                <td style="text-align: center; background: #f0fff4;" class="check">✅</td>
+                <td style="text-align: center;" class="cross">❌</td>
+                <td style="text-align: center; color: #d69e2e; font-weight: bold;">Partial</td>
+                <td style="text-align: center;" class="cross">❌</td>
+                <td style="text-align: center;" class="cross">❌</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">Anti-Addiction</td>
+                <td style="text-align: center; background: #f0fff4;" class="check">✅</td>
+                <td style="text-align: center;" class="cross">❌</td>
+                <td style="text-align: center;" class="cross">❌</td>
+                <td style="text-align: center;" class="cross">❌</td>
+                <td style="text-align: center; color: #a0aec0;">N/A</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">Proximity-Native</td>
+                <td style="text-align: center; background: #f0fff4;" class="check">✅</td>
+                <td style="text-align: center;" class="cross">❌</td>
+                <td style="text-align: center;" class="cross">❌</td>
+                <td style="text-align: center;" class="check">✅</td>
+                <td style="text-align: center;" class="check">✅</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">3-in-1 Integration</td>
+                <td style="text-align: center; background: #f0fff4;" class="check">✅</td>
+                <td style="text-align: center;" class="cross">❌</td>
+                <td style="text-align: center;" class="cross">❌</td>
+                <td style="text-align: center;" class="cross">❌</td>
+                <td style="text-align: center;" class="cross">❌</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">Ethical by Design</td>
+                <td style="text-align: center; background: #f0fff4;" class="check">✅</td>
+                <td style="text-align: center;" class="cross">❌</td>
+                <td style="text-align: center;" class="cross">❌</td>
+                <td style="text-align: center;" class="cross">❌</td>
+                <td style="text-align: center; color: #a0aec0;">N/A</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px;">
+          <div class="info-card" style="border-left-color: #e53e3e; background: #fff5f5;">
+            <h4 style="color: #c53030;">Why Competitors Can't Copy Us</h4>
+            <div style="margin: 15px 0;">
+              <p style="font-weight: bold; color: #2d3748;">LinkedIn:</p>
+              <p style="font-size: 0.95rem; color: #4a5568;">Can't do local (algorithm prioritizes global), can't stop addiction (shareholders demand engagement)</p>
+            </div>
+            <div style="margin: 15px 0;">
+              <p style="font-weight: bold; color: #2d3748;">Facebook:</p>
+              <p style="font-size: 0.95rem; color: #4a5568;">Toxic by design (outrage = engagement), reputation destroyed (73% distrust with data)</p>
+            </div>
+            <div style="margin: 15px 0;">
+              <p style="font-weight: bold; color: #2d3748;">Nextdoor:</p>
+              <p style="font-size: 0.95rem; color: #4a5568;">Single-use (complaints only), toxic culture, no Spanish, no integration</p>
+            </div>
+          </div>
+
+          <div class="info-card" style="border-left-color: #38a169; background: #f0fff4;">
+            <h4 style="color: #22543d;">Our Unfair Advantages</h4>
+            <ul style="color: #4a5568; font-size: 0.95rem;">
+              <li><strong>1. First-Mover in "Ethical Local"</strong> - No credible competitor exists, 18-24 month head start</li>
+              <li><strong>2. Can't Be Retrofit</strong> - LinkedIn/Facebook can't pivot (shareholder pressure), technical debt</li>
+              <li><strong>3. Regulatory Tailwind</strong> - Governments want ethical alternatives</li>
+              <li><strong>4. Cultural Positioning</strong> - Mexico/LatAm distrust US tech giants</li>
+              <li><strong>5. Founder Credibility</strong> - Surgeon + mental health = unique authority</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="gradient-box" style="background: linear-gradient(135deg, #e53e3e 0%, #ed8936 100%); margin-top: 40px;">
+          <p style="font-size: 2rem; font-weight: bold;">By the time they realize the opportunity, we'll own it.</p>
+        </div>
+      </div>
+
+      <!-- SLIDE 8: FINANCIAL PROJECTIONS -->
+      <div class="slide" data-slide="8">
+        <h1 style="color: #38a169;">FINANCIAL PROJECTIONS</h1>
+        <h2 style="color: #2d3748;">Conservative Assumptions. Clear Path to $112M.</h2>
+
+        <div class="highlight-box">
+          <h4 style="color: #2d3748; margin-bottom: 20px; text-align: center; font-size: 1.8rem;">5-Year Revenue Forecast</h4>
+          <table style="width: 100%; margin: 0;">
+            <thead>
+              <tr style="background: #2d3748;">
+                <th style="color: white;">Year</th>
+                <th style="text-align: center; color: white;">Cities</th>
+                <th style="text-align: center; color: white;">Users</th>
+                <th style="text-align: right; color: white;">Revenue</th>
+                <th style="text-align: right; color: white;">Net Profit</th>
+                <th style="text-align: right; color: white;">Cumulative</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight: bold;">1</td>
+                <td style="text-align: center;">1</td>
+                <td style="text-align: center;">35K</td>
+                <td style="text-align: right;">$186K</td>
+                <td style="text-align: right; color: #e53e3e; font-weight: bold;">-$809K</td>
+                <td style="text-align: right; color: #e53e3e;">-$809K</td>
+              </tr>
+              <tr style="background: #f0fff4;">
+                <td style="font-weight: bold;">2</td>
+                <td style="text-align: center;">4</td>
+                <td style="text-align: center;">180K</td>
+                <td style="text-align: right;">$3.0M</td>
+                <td style="text-align: right; color: #38a169; font-weight: bold;">+$1.7M ✅</td>
+                <td style="text-align: right; color: #38a169;">+$891K</td>
+              </tr>
+              <tr>
+                <td style="font-weight: bold;">3</td>
+                <td style="text-align: center;">10</td>
+                <td style="text-align: center;">650K</td>
+                <td style="text-align: right;">$13.8M</td>
+                <td style="text-align: right; color: #38a169;">+$9.6M</td>
+                <td style="text-align: right; color: #38a169;">+$10.5M</td>
+              </tr>
+              <tr>
+                <td style="font-weight: bold;">4</td>
+                <td style="text-align: center;">18</td>
+                <td style="text-align: center;">2.1M</td>
+                <td style="text-align: right;">$44.1M</td>
+                <td style="text-align: right; color: #38a169;">+$33.8M</td>
+                <td style="text-align: right; color: #38a169;">+$44.3M</td>
+              </tr>
+              <tr style="background: #ebf8ff;">
+                <td style="font-weight: bold;">5</td>
+                <td style="text-align: center;">25+</td>
+                <td style="text-align: center;">5.5M</td>
+                <td style="text-align: right; font-weight: bold; font-size: 1.5rem;">$112.1M</td>
+                <td style="text-align: right; color: #38a169; font-weight: bold;">+$91.1M</td>
+                <td style="text-align: right; color: #38a169; font-weight: bold;">+$135.4M</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="margin-top: 30px; text-align: center; background: #f0fff4; padding: 20px; border-radius: 12px;">
+            <p style="font-size: 1.5rem; font-weight: bold; color: #22543d;">PROFITABLE BY MONTH 14 (Year 2, Q2)</p>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px;">
+          <div class="info-card" style="border-left-color: #3182ce; background: #ebf8ff;">
+            <h4 style="color: #2c5282;">Revenue Mix (Year 5)</h4>
+            <div style="margin: 10px 0; display: flex; justify-content: space-between;">
+              <span style="color: #4a5568;">ÁGORA Premium</span>
+              <span style="font-weight: bold; color: #3182ce;">$29.7M (26%)</span>
+            </div>
+            <div style="margin: 10px 0; display: flex; justify-content: space-between;">
+              <span style="color: #4a5568;">World Boulevard</span>
+              <span style="font-weight: bold; color: #805ad5;">$68.4M (61%)</span>
+            </div>
+            <div style="margin: 10px 0; display: flex; justify-content: space-between;">
+              <span style="color: #4a5568;">Enterprise</span>
+              <span style="font-weight: bold; color: #38a169;">$14M (13%)</span>
+            </div>
+            <div style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #cbd5e0; display: flex; justify-content: space-between;">
+              <span style="font-weight: bold; color: #2d3748;">Total Revenue</span>
+              <span style="font-weight: bold; font-size: 1.8rem; color: #2d3748;">$112.1M</span>
+            </div>
+          </div>
+
+          <div class="info-card" style="border-left-color: #38a169; background: #f0fff4;">
+            <h4 style="color: #22543d;">Key Assumptions</h4>
+            <ul style="list-style: none; padding: 0; color: #4a5568; font-size: 0.95rem;">
+              <li><strong>Viral coefficient:</strong> 1.2-1.3x</li>
+              <li><strong>Churn:</strong> 5% monthly (Year 1) → 2.5% (Year 5)</li>
+              <li><strong>MAU:</strong> 75-80%</li>
+              <li><strong>ÁGORA Premium:</strong> 3% Year 1 → 9% Year 5</li>
+              <li><strong>World Boulevard Paid:</strong> 50% Year 1 → 70% Year 5</li>
+              <li><strong>CAC:</strong> $12</li>
+              <li><strong>LTV:</strong> $58</li>
+              <li><strong>LTV:CAC:</strong> 4.8:1</li>
+              <li><strong>Gross Margin:</strong> 85%</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="highlight-box" style="margin-top: 40px;">
+          <h4 style="color: #2d3748; margin-bottom: 20px; text-align: center;">Comparable Trajectories (Year 3 Revenue)</h4>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center;">
+            <div>
+              <p style="font-size: 0.9rem; color: #718096; margin-bottom: 5px;">Bumble</p>
+              <p style="font-size: 2rem; font-weight: bold; color: #2d3748;">$22M</p>
+            </div>
+            <div>
+              <p style="font-size: 0.9rem; color: #718096; margin-bottom: 5px;">Nextdoor</p>
+              <p style="font-size: 2rem; font-weight: bold; color: #2d3748;">$8M</p>
+            </div>
+            <div>
+              <p style="font-size: 0.9rem; color: #718096; margin-bottom: 5px;">Shopify</p>
+              <p style="font-size: 2rem; font-weight: bold; color: #2d3748;">$24M</p>
+            </div>
+            <div style="background: #ebf8ff; padding: 15px; border-radius: 12px;">
+              <p style="font-size: 0.9rem; color: #2c5282; margin-bottom: 5px;">HUMANBIBLIO</p>
+              <p style="font-size: 2rem; font-weight: bold; color: #3182ce;">$13.8M</p>
+            </div>
+          </div>
+          <p style="text-align: center; margin-top: 20px; color: #4a5568;">We're modeling 60-120% of "unicorn pace"—ambitious but realistic</p>
+        </div>
+
+        <div class="gradient-box" style="margin-top: 40px;">
+          <p style="font-size: 1.3rem; margin-bottom: 10px;"><strong>Bear Case (50%):</strong> $56M revenue, $40M profit</p>
+          <p style="font-size: 1.3rem; margin-bottom: 10px;"><strong>Base Case (100%):</strong> $112M revenue, $91M profit</p>
+          <p style="font-size: 1.3rem;"><strong>Bull Case (150%):</strong> $168M revenue, $145M profit</p>
+        </div>
+      </div>
+
+      <!-- SLIDE 9: TEAM -->
+      <div class="slide" data-slide="9">
+        <h1 style="color: #3182ce;">THE TEAM</h1>
+        <h2 style="color: #2d3748;">Proven Executors. Unique Credentials.</h2>
+
+        <div class="gradient-box" style="background: linear-gradient(135deg, #3182ce 0%, #805ad5 100%);">
+          <h3 style="font-size: 2.5rem; color: white; margin-bottom: 10px;">Dr. Juan de J. Sanchez</h3>
+          <p style="font-size: 1.5rem; color: rgba(255,255,255,0.9); margin-bottom: 30px;">Founder & CEO</p>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 20px; border-radius: 12px;">
+              <h4 style="color: white; margin-bottom: 15px;">Background</h4>
+              <ul style="list-style: none; padding: 0; color: rgba(255,255,255,0.9); font-size: 0.95rem;">
+                <li>• Colombian Physician</li>
+                <li>• Master's in Mental Health</li>
+                <li>• Immigrant to Canada</li>
+              </ul>
+            </div>
+            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 20px; border-radius: 12px;">
+              <h4 style="color: white; margin-bottom: 15px;">Expertise</h4>
+              <ul style="list-style: none; padding: 0; color: rgba(255,255,255,0.9); font-size: 0.95rem;">
+                <li>• Addiction science (not just claiming "ethical")</li>
+                <li>• High-stakes communication & trust-building</li>
+                <li>• Lived cultural/language barriers we solve</li>
+              </ul>
+            </div>
+            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 20px; border-radius: 12px;">
+              <h4 style="color: white; margin-bottom: 15px;">Unique Authority</h4>
+              <ul style="list-style: none; padding: 0; color: rgba(255,255,255,0.9); font-size: 0.95rem;">
+                <li>• Can speak credibly to mental health crisis</li>
+                <li>• Healthcare background = institutional trust</li>
+                <li>• Media loves story</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="gradient-box" style="background: linear-gradient(135deg, #805ad5 0%, #d53f8c 100%); margin-top: 30px;">
+          <h3 style="font-size: 2.5rem; color: white; margin-bottom: 10px;">Allan Viquez</h3>
+          <p style="font-size: 1.5rem; color: rgba(255,255,255,0.9); margin-bottom: 30px;">VP Marketing & Operations</p>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 20px; border-radius: 12px;">
+              <h4 style="color: white; margin-bottom: 15px;">Background</h4>
+              <ul style="list-style: none; padding: 0; color: rgba(255,255,255,0.9); font-size: 0.95rem;">
+                <li>• Costa Rican Marketing Expert</li>
+                <li>• Immigrant to Canada</li>
+                <li>• Multilingual (Spanish, English, Portuguese, French, Italian, Catalan)</li>
+              </ul>
+            </div>
+            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 20px; border-radius: 12px;">
+              <h4 style="color: white; margin-bottom: 15px;">Expertise</h4>
+              <ul style="list-style: none; padding: 0; color: rgba(255,255,255,0.9); font-size: 0.95rem;">
+                <li>• 10+ years digital marketing</li>
+                <li>• North American + LatAm market knowledge</li>
+                <li>• Growth playbooks that work</li>
+              </ul>
+            </div>
+            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 20px; border-radius: 12px;">
+              <h4 style="color: white; margin-bottom: 15px;">Value</h4>
+              <ul style="list-style: none; padding: 0; color: rgba(255,255,255,0.9); font-size: 0.95rem;">
+                <li>• Understands both markets deeply</li>
+                <li>• Execution-focused</li>
+                <li>• Proven track record</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px;">
+          <div class="info-card" style="border-left-color: #38a169; background: #f0fff4;">
+            <h4 style="color: #22543d;">Why This Team Will Win</h4>
+            <ul style="color: #4a5568; font-size: 0.95rem;">
+              <li><strong>We Did the Impossible:</strong> Built what took Nextdoor $18M + 3 years with $0 and 9 months without programming backgrounds</li>
+              <li><strong>Capital-Efficient Execution Machines:</strong> Asking for 1/12th of what Nextdoor raised to achieve 10x their early traction</li>
+              <li><strong>Domain Experts:</strong> Healthcare + Marketing. Understand the problem personally (we lived it)</li>
+              <li><strong>Moral Authority:</strong> Surgeon with mental health expertise can speak to harm of attention economy</li>
+            </ul>
+          </div>
+
+          <div class="info-card" style="border-left-color: #3182ce; background: #ebf8ff;">
+            <h4 style="color: #2c5282;">Advisors & Board (To Be Recruited)</h4>
+            <p style="font-weight: bold; color: #2d3748; margin-bottom: 10px;">Seeking advisors in:</p>
+            <ul style="color: #4a5568; font-size: 0.95rem;">
+              <li>• Social Impact Technology</li>
+              <li>• Mexico Market Entry</li>
+              <li>• AI Ethics & Governance</li>
+              <li>• SaaS Sales & Growth</li>
+            </ul>
+            <p style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #cbd5e0; font-weight: bold; color: #2d3748;">Lead investor gets board seat</p>
+          </div>
+        </div>
+
+        <div class="gradient-box" style="background: linear-gradient(135deg, #ed8936 0%, #e53e3e 100%); margin-top: 40px;">
+          <p style="font-size: 2rem; font-weight: bold; margin-bottom: 15px;">This is a bet on execution.</p>
+          <p style="font-size: 1.5rem;">And we've already proven we can execute at an unprecedented level.</p>
+        </div>
+      </div>
+
+      <!-- SLIDE 10: THE ASK -->
+      <div class="slide" data-slide="10">
+        <h1 style="color: #38a169;">THE ASK & USE OF FUNDS</h1>
+        <h2 style="color: #2d3748;">$1.5M to Scale Proven Model</h2>
+
+        <div class="gradient-box">
+          <h4 style="font-size: 1.5rem; color: white; margin-bottom: 20px;">Seed Round</h4>
+          <div style="font-size: 5rem; font-weight: bold; margin-bottom: 20px;">$1.5M</div>
+          <div style="font-size: 1.5rem; margin-bottom: 30px;">@ $10M Post-Money Valuation</div>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+            <div>
+              <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Equity Offered</p>
+              <p style="font-size: 2.5rem; font-weight: bold;">15%</p>
+            </div>
+            <div>
+              <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Instrument</p>
+              <p style="font-size: 1.5rem; font-weight: bold;">SAFE or Equity</p>
+            </div>
+            <div>
+              <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8);">Close by</p>
+              <p style="font-size: 1.5rem; font-weight: bold;">Jan 31, 2026</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight-box" style="margin-top: 40px;">
+          <h4 style="color: #2d3748; margin-bottom: 20px; text-align: center; font-size: 1.8rem;">Use of Funds: $1.5M Breakdown</h4>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div style="background: #ebf8ff; border-left: 4px solid #3182ce; padding: 20px; border-radius: 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <span style="font-weight: bold; color: #2c5282;">40% - TEAM</span>
+                <span style="font-size: 2rem; font-weight: bold; color: #3182ce;">$600K</span>
+              </div>
+              <ul style="font-size: 0.85rem; color: #4a5568;">
+                <li>VP of Growth ($100K)</li>
+                <li>Community Manager ($45K)</li>
+                <li>Developer #1 - Full-stack ($75K)</li>
+                <li>Developer #2 - AI/ML ($75K)</li>
+                <li>Founder salaries ($50K)</li>
+                <li>Payroll taxes + benefits ($100K)</li>
+                <li>Recruiting ($155K)</li>
+              </ul>
+            </div>
+
+            <div style="background: #faf5ff; border-left: 4px solid #805ad5; padding: 20px; border-radius: 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <span style="font-weight: bold; color: #553c9a;">35% - MARKETING</span>
+                <span style="font-size: 2rem; font-weight: bold; color: #805ad5;">$525K</span>
+              </div>
+              <ul style="font-size: 0.85rem; color: #4a5568;">
+                <li>Paid ads (Meta, Google, TikTok) ($250K)</li>
+                <li>Influencer partnerships ($75K)</li>
+                <li>PR agency 6 months ($60K)</li>
+                <li>Content creation ($40K)</li>
+                <li>Events + sponsorships ($50K)</li>
+                <li>Referral incentives ($50K)</li>
+              </ul>
+            </div>
+
+            <div style="background: #f0fff4; border-left: 4px solid #38a169; padding: 20px; border-radius: 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <span style="font-weight: bold; color: #22543d;">15% - TECHNOLOGY</span>
+                <span style="font-size: 2rem; font-weight: bold; color: #38a169;">$225K</span>
+              </div>
+              <ul style="font-size: 0.85rem; color: #4a5568;">
+                <li>Supabase hosting (scale to 50K users) ($60K)</li>
+                <li>APIs (Stripe, WebRTC, AI compute) ($30K)</li>
+                <li>Security audits (ongoing) ($25K)</li>
+                <li>Domains + CDN ($10K)</li>
+                <li>Emergency contractor budget ($100K)</li>
+              </ul>
+            </div>
+
+            <div style="background: #fffaf0; border-left: 4px solid #ed8936; padding: 20px; border-radius: 12px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <span style="font-weight: bold; color: #c05621;">10% - LEGAL & OPS</span>
+                <span style="font-size: 2rem; font-weight: bold; color: #ed8936;">$150K</span>
+              </div>
+              <ul style="font-size: 0.85rem; color: #4a5568;">
+                <li>Patent filing (Mexico, Canada, US) ($60K)</li>
+                <li>Incorporation (proper structure) ($15K)</li>
+                <li>Legal counsel retainer ($30K)</li>
+                <li>Accounting/bookkeeping ($20K)</li>
+                <li>Insurance (liability, D&O) ($15K)</li>
+                <li>Office/co-working ($10K)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-grid" style="margin-top: 40px;">
+          <div class="info-card" style="border-left-color: #3182ce; text-align: center;">
+            <p style="font-size: 0.9rem; color: #718096; margin-bottom: 10px;">Exit Scenario 1: Acquisition Year 4</p>
+            <p style="font-size: 1.5rem; font-weight: bold; color: #3182ce; margin-bottom: 5px;">10x revenue</p>
+            <p style="font-size: 2.5rem; font-weight: bold; color: #2d3748;">$441M</p>
+            <p style="font-weight: bold; color: #38a169; margin-top: 10px;">44x return in 4 years</p>
+          </div>
+          <div class="info-card" style="border-left-color: #805ad5; text-align: center;">
+            <p style="font-size: 0.9rem; color: #718096; margin-bottom: 10px;">Exit Scenario 2: Series A → Acquisition</p>
+            <p style="font-size: 1.5rem; font-weight: bold; color: #805ad5; margin-bottom: 5px;">Series A + Exit</p>
+            <p style="font-size: 2.5rem; font-weight: bold; color: #2d3748;">$1B</p>
+            <p style="font-weight: bold; color: #38a169; margin-top: 10px;">67x return in 6 years</p>
+          </div>
+          <div class="info-card" style="border-left-color: #38a169; text-align: center;">
+            <p style="font-size: 0.9rem; color: #718096; margin-bottom: 10px;">Exit Scenario 3: IPO (Year 7+)</p>
+            <p style="font-size: 1.5rem; font-weight: bold; color: #38a169; margin-bottom: 5px;">15-20x revenue</p>
+            <p style="font-size: 2.5rem; font-weight: bold; color: #2d3748;">$3.75-5B</p>
+            <p style="font-weight: bold; color: #38a169; margin-top: 10px;">200-267x return</p>
+          </div>
+        </div>
+
+        <div class="gradient-box" style="background: linear-gradient(135deg, #1a365d 0%, #553c9a 50%, #742a2a 100%); margin-top: 40px;">
+          <h3 style="font-size: 2.5rem; color: white; margin-bottom: 20px;">This is the safest seed investment you'll see this year.</h3>
+          <p style="font-size: 1.3rem; margin-bottom: 30px;">Product is done. Market is ready. Competition is asleep. Team is proven. Path is clear.</p>
+          <div>
+            <p style="font-size: 3rem; font-weight: bold; margin-bottom: 30px;">Are you in?</p>
+            <div style="background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); padding: 30px; border-radius: 20px; display: inline-block;">
+              <p style="font-size: 1.8rem; font-weight: bold; margin-bottom: 15px;">Dr. Juan de J. Sanchez | Founder & CEO</p>
+              <p style="font-size: 1.2rem;">📧 Humanbiblio@gmail.com | 📱 (289) 990-0450</p>
+              <p style="font-size: 1.2rem; margin-top: 10px;">📍 St. Catharines, Ontario, Canada</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-dots" style="background: rgba(0,0,0,0.9); padding: 20px;">
+      <div class="dot active" onclick="goToSlide(1)"></div>
+      <div class="dot" onclick="goToSlide(2)"></div>
+      <div class="dot" onclick="goToSlide(3)"></div>
+      <div class="dot" onclick="goToSlide(4)"></div>
+      <div class="dot" onclick="goToSlide(5)"></div>
+      <div class="dot" onclick="goToSlide(6)"></div>
+      <div class="dot" onclick="goToSlide(7)"></div>
+      <div class="dot" onclick="goToSlide(8)"></div>
+      <div class="dot" onclick="goToSlide(9)"></div>
+      <div class="dot" onclick="goToSlide(10)"></div>
+    </div>
+  </div>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 10;
+
+    function updateSlide() {
+      document.querySelectorAll('.slide').forEach((slide, index) => {
+        slide.classList.toggle('active', index + 1 === currentSlide);
+      });
+
+      document.querySelectorAll('.dot').forEach((dot, index) => {
+        dot.classList.toggle('active', index + 1 === currentSlide);
+      });
+
+      document.getElementById('slideCounter').textContent = `Slide ${currentSlide} of ${totalSlides}`;
+      document.getElementById('prevBtn').disabled = currentSlide === 1;
+      document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function previousSlide() {
+      if (currentSlide > 1) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    function goToSlide(slideNumber) {
+      currentSlide = slideNumber;
+      updateSlide();
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') previousSlide();
+    });
+
+    updateSlide();
+  </script>
+</body>
+</html>
