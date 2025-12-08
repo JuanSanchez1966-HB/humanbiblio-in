@@ -1,0 +1,61 @@
+{
+  "name": "HUMANBIBLIO - La Inteligencia Natural",
+  "short_name": "HUMANBIBLIO",
+  "description": "Primera plataforma que libera la comunicación humana de algoritmos manipulativos",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "es",
+  "categories": ["social", "networking", "business", "productivity"],
+  "icons": [
+    {
+      "src": "https://i.imgur.com/TzZrbxK.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://i.imgur.com/TzZrbxK.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "https://i.imgur.com/TzZrbxK.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ágora",
+      "short_name": "Ágora",
+      "description": "Encuentro de mentes brillantes",
+      "url": "/?section=agora",
+      "icons": [
+        {
+          "src": "https://i.imgur.com/TzZrbxK.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "World Boulevard",
+      "short_name": "Boulevard",
+      "description": "Comercio orgánico",
+      "url": "/?section=boulevard",
+      "icons": [
+        {
+          "src": "https://i.imgur.com/TzZrbxK.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

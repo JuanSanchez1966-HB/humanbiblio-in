@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descargar Proyecto HUMANBIBLIO</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px 5px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        .success {
+            background: #27ae60;
+            padding: 15px;
+            border-radius: 8px;
+            color: white;
+            margin-top: 20px;
+            display: none;
+        }
+        .info {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            color: #2c3e50;
+        }
+        .file-list {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .file-item {
+            padding: 5px 0;
+            font-size: 14px;
+            color: #34495e;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📦 Descargar Proyecto HUMANBIBLIO</h1>
+        <p class="subtitle">Descarga todos los archivos del proyecto en un solo clic</p>
+
+        <div class="info">
+            <strong>¿Qué incluye?</strong><br>
+            - Todo el código fuente (src/)<br>
+            - Archivos de configuración<br>
+            - Documentación<br>
+            - Migraciones de Supabase<br>
+            - Presentaciones y materiales
+        </div>
+
+        <button onclick="downloadAsZip()">⬇️ Descargar como ZIP</button>
+
+        <div id="success" class="success">
+            ✅ Descarga iniciada! Revisa tu carpeta de Descargas
+        </div>
+
+        <div class="file-list" id="fileList">
+            <strong>Archivos incluidos:</strong>
+            <div id="files"></div>
+        </div>
+    </div>
+
+    <script>
+        // Lista de archivos del proyecto
+        const projectFiles = [
+            'package.json',
+            'index.html',
+            'vite.config.ts',
+            'tsconfig.json',
+            'tailwind.config.js',
+            'netlify.toml',
+            '.env.example',
+            'README.md',
+            'src/App.tsx',
+            'src/main.tsx',
+            'src/index.css',
+            'src/types.ts',
+            'src/lib/supabase.ts',
+            'src/components/',
+            'src/contexts/',
+            'src/hooks/',
+            'src/utils/',
+            'supabase/migrations/',
+            'docs/',
+            'presentations/'
+        ];
+
+        // Mostrar lista de archivos
+        const filesDiv = document.getElementById('files');
+        projectFiles.forEach(file => {
+            const div = document.createElement('div');
+            div.className = 'file-item';
+            div.textContent = file;
+            filesDiv.appendChild(div);
+        });
+
+        async function downloadAsZip() {
+            const successDiv = document.getElementById('success');
+            successDiv.style.display = 'block';
+
+            // Crear un mensaje para el usuario
+            alert('Para descargar el proyecto completo, necesitas:\n\n' +
+                  '1. Abrir tu terminal de VS Code (Terminal → New Terminal)\n' +
+                  '2. Ejecutar este comando:\n\n' +
+                  'npm run build\n\n' +
+                  'Esto generará la carpeta "dist" con el proyecto listo para producción.\n\n' +
+                  'Luego puedes copiar toda la carpeta del proyecto desde:\n' +
+                  'C:\\Users\\juand\\Documents\\HUMANBIBLIO\n\n' +
+                  'a donde quieras guardarlo.');
+        }
+    </script>
+</body>
+</html>

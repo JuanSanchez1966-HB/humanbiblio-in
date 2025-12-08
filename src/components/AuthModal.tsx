@@ -1,0 +1,305 @@
+import React, { useState, useEffect } from 'react';
+import { useAuth } from '../contexts/AuthContext';
+<<<<<<< HEAD
+import { useLanguage } from '../contexts/LanguageContext';
+import LoadingButton from './LoadingButton';
+import ErrorMessage from './ErrorMessage';
+import { supabase } from '../lib/supabase';
+=======
+import LoadingButton from './LoadingButton';
+import ErrorMessage from './ErrorMessage';
+>>>>>>> d2f4627176dbd2b45f9f32eb8f6c4ad1770ae193
+
+interface AuthModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
+<<<<<<< HEAD
+  const { t } = useLanguage();
+=======
+>>>>>>> d2f4627176dbd2b45f9f32eb8f6c4ad1770ae193
+  const [isLogin, setIsLogin] = useState(true);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [localError, setLocalError] = useState<string | null>(null);
+<<<<<<< HEAD
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [connectionStatus, setConnectionStatus] = useState<'unknown' | 'testing' | 'ok' | 'blocked'>('unknown');
+=======
+>>>>>>> d2f4627176dbd2b45f9f32eb8f6c4ad1770ae193
+  const { signIn, signUp, loading, error: authError, clearError } = useAuth();
+
+  useEffect(() => {
+    if (authError) {
+      setLocalError(authError);
+    }
+  }, [authError]);
+
+<<<<<<< HEAD
+  // Reset all states when modal closes
+  useEffect(() => {
+    if (!isOpen) {
+      setLocalError(null);
+      setIsSubmitting(false);
+      setEmail('');
+      setPassword('');
+      setFullName('');
+      setConnectionStatus('unknown');
+=======
+  useEffect(() => {
+    if (!isOpen) {
+      setLocalError(null);
+>>>>>>> d2f4627176dbd2b45f9f32eb8f6c4ad1770ae193
+      clearError();
+    }
+  }, [isOpen, clearError]);
+
+<<<<<<< HEAD
+  // Simplified: Skip connection test for pilot
+  useEffect(() => {
+    if (isOpen && connectionStatus === 'unknown') {
+      setConnectionStatus('ok');
+    }
+  }, [isOpen]);
+
+=======
+>>>>>>> d2f4627176dbd2b45f9f32eb8f6c4ad1770ae193
+  if (!isOpen) return null;
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLocalError(null);
+    clearError();
+<<<<<<< HEAD
+    setIsSubmitting(true);
+
+    try {
+      console.log('🔐 AuthModal: Starting auth...');
+
+      if (isLogin) {
+        await signIn(email, password);
+        console.log('✅ AuthModal: Login successful');
+      } else {
+        await signUp(email, password, { full_name: fullName });
+        console.log('✅ AuthModal: Signup successful');
+      }
+
+      setIsSubmitting(false);
+      onClose();
+
+      // Log action in background (don't await)
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          supabase.rpc('log_user_action', {
+            p_user_id: user.id,
+            p_action_type: isLogin ? 'login' : 'conversion',
+            p_target_id: isLogin ? undefined : 'signup',
+            p_metadata: { email, fullName, source: 'auth_modal' }
+          }).catch(err => console.warn('Analytics error:', err));
+        }
+      } catch (err) {
+        console.warn('Could not log action:', err);
+      }
+    } catch (error: any) {
+      console.error('❌ AuthModal: Error:', error);
+      setLocalError(error.message || 'Error al iniciar sesión. Verifica tus credenciales.');
+      setIsSubmitting(false);
+=======
+
+    try {
+      if (isLogin) {
+        await signIn(email, password);
+      } else {
+        await signUp(email, password, { full_name: fullName });
+      }
+      onClose();
+    } catch (error: any) {
+      setLocalError(error.message || 'Ocurrió un error inesperado');
+>>>>>>> d2f4627176dbd2b45f9f32eb8f6c4ad1770ae193
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4" data-auth-modal>
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
+        <div className="p-8">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900">
+<<<<<<< HEAD
+              {isLogin ? t('auth.login.title') : t('auth.signup.title')}
+            </h2>
+            <p className="text-gray-600 mt-2">
+              {isLogin ? t('auth.login.subtitle') : t('auth.signup.subtitle')}
+            </p>
+          </div>
+
+
+=======
+              {isLogin ? '🔑 Iniciar Sesión' : '📝 Crear Cuenta'}
+            </h2>
+            <p className="text-gray-600 mt-2">
+              {isLogin ? 'Accede a tu cuenta' : 'Únete a HUMANBIBLIO'}
+            </p>
+          </div>
+
+>>>>>>> d2f4627176dbd2b45f9f32eb8f6c4ad1770ae193
+          {localError && (
+            <div className="mb-4">
+              <ErrorMessage
+                type="error"
+                message={localError}
+                onClose={() => {
+                  setLocalError(null);
+                  clearError();
+                }}
+              />
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {!isLogin && (
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+<<<<<<< HEAD
+                  {t('auth.fullname')}
+=======
+                  Nombre completo
+>>>>>>> d2f4627176dbd2b45f9f32eb8f6c4ad1770ae193
+                </label>
+                <input
+                  type="text"
+                  value={fullName}
+                  onChange={(e) => setFullName(e.target.value)}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  required={!isLogin}
+                />
+              </div>
+            )}
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+<<<<<<< HEAD
+                {t('auth.email')}
+=======
+                Email
+>>>>>>> d2f4627176dbd2b45f9f32eb8f6c4ad1770ae193
+              </label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+<<<<<<< HEAD
+                {t('auth.password')}
+=======
+                Contraseña
+>>>>>>> d2f4627176dbd2b45f9f32eb8f6c4ad1770ae193
+              </label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                required
+              />
+            </div>
+
+            <LoadingButton
+              type="submit"
+<<<<<<< HEAD
+              loading={loading || isSubmitting}
+              loadingText={t('auth.processing')}
+=======
+              loading={loading}
+              loadingText="Procesando..."
+>>>>>>> d2f4627176dbd2b45f9f32eb8f6c4ad1770ae193
+              variant="primary"
+              size="lg"
+              className="w-full"
+            >
+<<<<<<< HEAD
+              {isLogin ? t('auth.login.button') : t('auth.signup.button')}
+=======
+              {isLogin ? 'Iniciar Sesión' : 'Crear Cuenta'}
+>>>>>>> d2f4627176dbd2b45f9f32eb8f6c4ad1770ae193
+            </LoadingButton>
+          </form>
+
+          <div className="mt-6 text-center">
+            <button
+              onClick={() => setIsLogin(!isLogin)}
+              className="text-blue-600 hover:text-blue-700 font-medium"
+            >
+<<<<<<< HEAD
+              {isLogin ? t('auth.no.account') : t('auth.have.account')}
+            </button>
+
+            <div className="mt-4 pt-4 border-t border-gray-200">
+              <p className="text-sm text-gray-600 mb-3">{t('auth.looking.for')}</p>
+=======
+              {isLogin ? '¿No tienes cuenta? Regístrate' : '¿Ya tienes cuenta? Inicia sesión'}
+            </button>
+            
+            <div className="mt-4 pt-4 border-t border-gray-200">
+              <p className="text-sm text-gray-600 mb-3">¿Buscas algo específico?</p>
+>>>>>>> d2f4627176dbd2b45f9f32eb8f6c4ad1770ae193
+              <div className="flex flex-col space-y-2">
+                <button
+                  onClick={() => {
+                    onClose();
+<<<<<<< HEAD
+=======
+                    // Disparar evento para abrir formulario Ágora
+>>>>>>> d2f4627176dbd2b45f9f32eb8f6c4ad1770ae193
+                    window.dispatchEvent(new CustomEvent('openAgoraRegistration'));
+                  }}
+                  className="px-4 py-2 bg-blue-100 text-blue-800 rounded-lg hover:bg-blue-200 transition-colors text-sm font-medium"
+                >
+<<<<<<< HEAD
+                  {t('auth.join.agora')}
+=======
+                  🏛️ Únete al Ágora (Personas)
+>>>>>>> d2f4627176dbd2b45f9f32eb8f6c4ad1770ae193
+                </button>
+                <button
+                  onClick={() => {
+                    onClose();
+<<<<<<< HEAD
+=======
+                    // Disparar evento para abrir formulario Boulevard
+>>>>>>> d2f4627176dbd2b45f9f32eb8f6c4ad1770ae193
+                    window.dispatchEvent(new CustomEvent('openBoulevardRegistration'));
+                  }}
+                  className="px-4 py-2 bg-emerald-100 text-emerald-800 rounded-lg hover:bg-emerald-200 transition-colors text-sm font-medium"
+                >
+<<<<<<< HEAD
+                  {t('auth.register.business')}
+=======
+                  🛍️ Registrar Negocio (World Boulevard)
+>>>>>>> d2f4627176dbd2b45f9f32eb8f6c4ad1770ae193
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
+          >
+            ✕
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}

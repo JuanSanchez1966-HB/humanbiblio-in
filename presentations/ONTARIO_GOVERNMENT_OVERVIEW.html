@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUMANBIBLIO - Ontario Government Investment Overview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            overflow: hidden;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem;
+            color: white;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-header {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .slide-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #e0e7ff;
+            font-weight: 300;
+        }
+
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .metric-value {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 1.1rem;
+            color: #e0e7ff;
+            font-weight: 500;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .feature-list li {
+            font-size: 1.3rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e0e7ff;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            margin-right: 1rem;
+            font-size: 1.5rem;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .nav-button {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .fullscreen-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .fullscreen-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .download-button {
+            position: fixed;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.75rem 1.5rem;
+            background: rgba(16, 185, 129, 0.9);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .download-button:hover {
+            background: rgba(5, 150, 105, 0.9);
+            transform: translateX(-50%) scale(1.05);
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .column-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .column-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #a5b4fc;
+        }
+
+        .column-card p, .column-card li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e0e7ff;
+        }
+
+        @media (max-width: 768px) {
+            .slide-header {
+                font-size: 2rem;
+            }
+
+            .slide-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .metric-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .slide {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <button class="fullscreen-button" onclick="toggleFullscreen()">⛶ Fullscreen</button>
+        <button class="download-button" onclick="downloadPresentation()">📥 Descargar esta Presentación</button>
+        <div class="slide-counter">
+            <span id="current-slide">1</span> / <span id="total-slides">9</span>
+        </div>
+
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <div class="slide-header">🏛️ HUMANBIBLIO</div>
+            <div class="slide-subtitle">Ontario Government Investment Overview</div>
+            <div class="slide-content">
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">$42.9B</div>
+                        <div class="metric-label">Total Market Opportunity</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">$214M</div>
+                        <div class="metric-label">Projected Year 3 Revenue</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">3.2B</div>
+                        <div class="metric-label">Global Users Targeted</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Executive Summary -->
+        <div class="slide">
+            <div class="slide-header">Executive Summary</div>
+            <div class="slide-subtitle">Revolutionary Social Commerce Platform</div>
+            <div class="slide-content">
+                <ul class="feature-list">
+                    <li>Dual marketplace combining authentic connections (Ágora) with ethical commerce (World Boulevard)</li>
+                    <li>Anti-addictive design principles protecting mental health and user wellbeing</li>
+                    <li>Natural Intelligence over Artificial Intelligence - human-centric approach</li>
+                    <li>Patented Conscious Connection Flow™ technology</li>
+                    <li>Strategic positioning to capture Gen Z and millennial markets dissatisfied with current platforms</li>
+                    <li>Revenue model: Premium subscriptions, transaction fees, and enterprise solutions</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 3: Market Opportunity -->
+        <div class="slide">
+            <div class="slide-header">Market Opportunity</div>
+            <div class="slide-subtitle">Massive Addressable Market</div>
+            <div class="slide-content">
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">$16.8B</div>
+                        <div class="metric-label">Social Media Market (Canada)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">$26.1B</div>
+                        <div class="metric-label">E-Commerce Market (Canada)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">68%</div>
+                        <div class="metric-label">Users Concerned About Social Media Impact</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">4.9B</div>
+                        <div class="metric-label">Global Social Media Users</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Platform Architecture -->
+        <div class="slide">
+            <div class="slide-header">Platform Architecture</div>
+            <div class="slide-subtitle">Two Integrated Ecosystems</div>
+            <div class="slide-content">
+                <div class="two-column">
+                    <div class="column-card">
+                        <h3>🏛️ El Ágora (Social)</h3>
+                        <ul class="feature-list">
+                            <li>Authentic human connections</li>
+                            <li>Skill-based matching</li>
+                            <li>Collaborative projects</li>
+                            <li>Mental health protection</li>
+                            <li>Natural Intelligence features</li>
+                        </ul>
+                    </div>
+                    <div class="column-card">
+                        <h3>🛍️ World Boulevard (Commerce)</h3>
+                        <ul class="feature-list">
+                            <li>Ethical marketplace</li>
+                            <li>Local business support</li>
+                            <li>Transparent transactions</li>
+                            <li>Professional networking</li>
+                            <li>B2B & B2C integration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Competitive Advantages -->
+        <div class="slide">
+            <div class="slide-header">Competitive Advantages</div>
+            <div class="slide-subtitle">Unique Market Positioning</div>
+            <div class="slide-content">
+                <ul class="feature-list">
+                    <li>Only platform combining social connection with ethical commerce</li>
+                    <li>Anti-addictive design differentiates from all competitors</li>
+                    <li>Patented Conscious Connection Flow™ technology</li>
+                    <li>Focus on mental health and authentic relationships</li>
+                    <li>Support for local businesses and ethical entrepreneurship</li>
+                    <li>Natural Intelligence approach vs. AI manipulation</li>
+                    <li>Built in Canada, designed for global scale</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 6: Financial Projections -->
+        <div class="slide">
+            <div class="slide-header">Financial Projections</div>
+            <div class="slide-subtitle">Conservative Growth Model</div>
+            <div class="slide-content">
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">$8.2M</div>
+                        <div class="metric-label">Year 1 Revenue</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">$52.7M</div>
+                        <div class="metric-label">Year 2 Revenue</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">$214M</div>
+                        <div class="metric-label">Year 3 Revenue</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">$687M</div>
+                        <div class="metric-label">Year 5 Revenue</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Revenue Streams -->
+        <div class="slide">
+            <div class="slide-header">Revenue Streams</div>
+            <div class="slide-subtitle">Diversified Income Sources</div>
+            <div class="slide-content">
+                <div class="two-column">
+                    <div class="column-card">
+                        <h3>Premium Subscriptions</h3>
+                        <p>$9.99-$29.99/month for enhanced features, advanced matching, and priority support</p>
+                    </div>
+                    <div class="column-card">
+                        <h3>Transaction Fees</h3>
+                        <p>3-5% commission on World Boulevard marketplace transactions</p>
+                    </div>
+                    <div class="column-card">
+                        <h3>Enterprise Solutions</h3>
+                        <p>White-label platform licensing for businesses and organizations</p>
+                    </div>
+                    <div class="column-card">
+                        <h3>Professional Services</h3>
+                        <p>Consulting, training, and implementation services</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Investment Opportunity -->
+        <div class="slide">
+            <div class="slide-header">Investment Opportunity</div>
+            <div class="slide-subtitle">Strategic Partnership with Ontario</div>
+            <div class="slide-content">
+                <ul class="feature-list">
+                    <li>Seed funding requirement: $2M CAD for 18-month runway</li>
+                    <li>Create 50+ high-skilled tech jobs in Ontario within 24 months</li>
+                    <li>Establish Toronto as global headquarters for operations</li>
+                    <li>Partner with Ontario universities for research and talent pipeline</li>
+                    <li>Support for Ontario small businesses through World Boulevard</li>
+                    <li>Mental health initiatives aligned with provincial priorities</li>
+                    <li>Potential for massive ROI as platform scales globally</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 9: Next Steps -->
+        <div class="slide">
+            <div class="slide-header">Next Steps</div>
+            <div class="slide-subtitle">Partnership Roadmap</div>
+            <div class="slide-content">
+                <div class="two-column">
+                    <div class="column-card">
+                        <h3>Phase 1: Foundation (Months 1-6)</h3>
+                        <ul class="feature-list">
+                            <li>Secure Ontario investment</li>
+                            <li>Establish Toronto HQ</li>
+                            <li>Build core development team</li>
+                            <li>Complete platform MVP</li>
+                        </ul>
+                    </div>
+                    <div class="column-card">
+                        <h3>Phase 2: Launch (Months 7-12)</h3>
+                        <ul class="feature-list">
+                            <li>Beta launch in Ontario</li>
+                            <li>Partner with local businesses</li>
+                            <li>University partnerships</li>
+                            <li>Public launch and scaling</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navigation">
+            <button class="nav-button" id="prev-btn" onclick="previousSlide()">← Previous</button>
+            <button class="nav-button" id="next-btn" onclick="nextSlide()">Next →</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        document.getElementById('total-slides').textContent = totalSlides;
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[n].classList.add('active');
+            document.getElementById('current-slide').textContent = n + 1;
+
+            document.getElementById('prev-btn').disabled = n === 0;
+            document.getElementById('next-btn').disabled = n === totalSlides - 1;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        function downloadPresentation() {
+            const element = document.documentElement;
+            const htmlContent = element.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'HUMANBIBLIO-Ontario-Investment-Overview.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                previousSlide();
+            } else if (e.key === 'f' || e.key === 'F') {
+                e.preventDefault();
+                toggleFullscreen();
+            } else if (e.key === 'd' || e.key === 'D') {
+                e.preventDefault();
+                downloadPresentation();
+            }
+        });
+
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>

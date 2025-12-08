@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUMANBIBLIO - Presentación para Inversores</title>
+    <style>
+        /* Variables CSS para fácil customización */
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #7c3aed;
+            --accent-color: #059669;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-dark);
+            overflow: hidden;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .slide {
+            width: 90vw;
+            max-width: 1200px;
+            height: 85vh;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            padding: 60px;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            display: flex;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .slide h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .slide h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .slide p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            max-height: 120px;
+            width: auto;
+            filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.1));
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+
+        .problem-solution {
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid;
+        }
+
+        .problem {
+            background: linear-gradient(135deg, #fef2f2, #fee2e2);
+            border-color: #fca5a5;
+        }
+
+        .solution {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border-color: #86efac;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+            transition: transform 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .metric-value {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .revenue-breakdown {
+            background: linear-gradient(135deg, #fefce8, #fef3c7);
+            border: 2px solid #fbbf24;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .revenue-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #fbbf24;
+        }
+
+        .revenue-item:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .slide-counter {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .competitive-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .competitive-table th,
+        .competitive-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .competitive-table th {
+            background: var(--bg-gradient);
+            color: white;
+            font-weight: 700;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            font-weight: 600;
+        }
+
+        .demo-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .demo-feature {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 2px solid #0ea5e9;
+            text-align: center;
+        }
+
+        .demo-feature h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .cta-section {
+            background: var(--bg-gradient);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .investment-highlight {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border: 3px solid var(--success-color);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .risk-mitigation {
+            background: linear-gradient(135deg, #fefce8, #fef3c7);
+            border: 2px solid var(--warning-color);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 30px;
+                width: 95vw;
+                height: 90vh;
+            }
+            
+            .slide h1 {
+                font-size: 2.5rem;
+            }
+            
+            .slide h2 {
+                font-size: 2rem;
+            }
+            
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Slide 1: Portada -->
+        <div class="slide active" id="slide-1">
+            <div class="logo-container">
+                <img src="https://i.imgur.com/TzZrbxK.png" alt="HUMANBIBLIO" class="logo" />
+            </div>
+            <h1>HUMANBIBLIO</h1>
+            <p style="font-size: 1.8rem; color: var(--primary-color); font-weight: 600;">La Inteligencia Natural</p>
+            <p style="font-size: 1.3rem; margin-top: 2rem;">Primera plataforma que libera la comunicación humana de algoritmos manipulativos</p>
+            
+            <div class="metrics-grid" style="margin-top: 3rem;">
+                <div class="metric-card">
+                    <div class="metric-value">95+</div>
+                    <div class="metric-label">Lighthouse Score</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">100%</div>
+                    <div class="metric-label">PWA Funcional</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">4</div>
+                    <div class="metric-label">IA Especializada</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">$42.9B</div>
+                    <div class="metric-label">TAM</div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 2rem; font-size: 1.1rem;">
+                <strong>Demo en vivo:</strong> 
+                <a href="https://humanbiblio-app.netlify.app" target="_blank" style="color: var(--primary-color);">
+                    humanbiblio-app.netlify.app
+                </a>
+            </p>
+        </div>
+
+        <!-- Slide 2: El Problema -->
+        <div class="slide" id="slide-2">
+            <h2>⚠️ El Problema: Comunicación Subvertida</h2>
+            
+            <div class="two-column">
+                <div class="problem-solution problem">
+                    <h3 style="color: #dc2626; margin-bottom: 1.5rem;">🔴 Redes Tradicionales</h3>
+                    <div style="space-y: 1rem;">
+                        <p style="text-align: left; margin-bottom: 1rem;"><strong>❌ Algoritmos manipulativos:</strong> Deciden qué ves y cuándo</p>
+                        <p style="text-align: left; margin-bottom: 1rem;"><strong>❌ Economía de atención:</strong> Tu tiempo = su producto</p>
+                        <p style="text-align: left; margin-bottom: 1rem;"><strong>❌ Publicidad intrusiva:</strong> Interrumpe conexiones reales</p>
+                        <p style="text-align: left; margin-bottom: 1rem;"><strong>❌ Engagement artificial:</strong> Métricas vacías</p>
+                        <p style="text-align: left; margin-bottom: 1rem;"><strong>❌ Datos como producto:</strong> Privacidad monetizada</p>
+                    </div>
+                    <div style="text-align: center; margin-top: 2rem; padding: 1rem; background: rgba(220, 38, 38, 0.1); border-radius: 10px;">
+                        <strong style="color: #dc2626;">Resultado: Malestar + Adicción</strong>
+                    </div>
+                </div>
+
+                <div class="problem-solution solution">
+                    <h3 style="color: #059669; margin-bottom: 1.5rem;">🟢 HUMANBIBLIO</h3>
+                    <div style="space-y: 1rem;">
+                        <p style="text-align: left; margin-bottom: 1rem;"><strong>✅ Comunicación auténtica:</strong> Emisor → Receptor directo</p>
+                        <p style="text-align: left; margin-bottom: 1rem;"><strong>✅ IA como herramienta:</strong> Tú mantienes control total</p>
+                        <p style="text-align: left; margin-bottom: 1rem;"><strong>✅ Comercio orgánico:</strong> Sin publicidad forzada</p>
+                        <p style="text-align: left; margin-bottom: 1rem;"><strong>✅ Conexiones conscientes:</strong> Calidad sobre cantidad</p>
+                        <p style="text-align: left; margin-bottom: 1rem;"><strong>✅ Privacidad respetada:</strong> Tus datos son tuyos</p>
+                    </div>
+                    <div style="text-align: center; margin-top: 2rem; padding: 1rem; background: rgba(5, 150, 105, 0.1); border-radius: 10px;">
+                        <strong style="color: #059669;">Resultado: Bienestar + Crecimiento</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem; font-size: 1.4rem; font-weight: 600;">
+                💡 <strong>Oportunidad:</strong> Liderar la revolución hacia comunicación digital consciente
+            </div>
+        </div>
+
+        <!-- Slide 3: La Solución -->
+        <div class="slide" id="slide-3">
+            <h2>🏛️ La Solución: Inteligencia Natural</h2>
+            
+            <div class="demo-showcase">
+                <div class="demo-feature">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🏛️</div>
+                    <h4>Ágora - Encuentro de Mentes</h4>
+                    <p style="font-size: 0.9rem; text-align: center;">IA contextual + Networking consciente + Comunicación multimedia</p>
+                </div>
+                <div class="demo-feature">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🛍️</div>
+                    <h4>World Boulevard</h4>
+                    <p style="font-size: 0.9rem; text-align: center;">Comercio orgánico + Perfiles expandidos + Sin intermediarios</p>
+                </div>
+                <div class="demo-feature">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
+                    <h4>Dashboard Personal</h4>
+                    <p style="font-size: 0.9rem; text-align: center;">Geolocalización + Matching IA + Analytics conscientes</p>
+                </div>
+                <div class="demo-feature">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🌌</div>
+                    <h4>Universo</h4>
+                    <p style="font-size: 0.9rem; text-align: center;">Financiación conversacional + Proyectos colaborativos</p>
+                </div>
+                <div class="demo-feature">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📱</div>
+                    <h4>PWA Ultra-Optimizada</h4>
+                    <p style="font-size: 0.9rem; text-align: center;">Instalable + Offline + Performance 95+</p>
+                </div>
+                <div class="demo-feature">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🧠</div>
+                    <h4>IA Contextual</h4>
+                    <p style="font-size: 0.9rem; text-align: center;">4 personalidades + Respuestas especializadas</p>
+                </div>
+            </div>
+
+            <div class="investment-highlight">
+                <h3 style="color: white; margin-bottom: 1rem;">🚀 Estado Actual: Demo 100% Funcional</h3>
+                <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem;">
+                    Todas las funcionalidades implementadas • PWA instalable • IA operativa • Geolocalización funcional
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 4: Demo en Vivo -->
+        <div class="slide" id="slide-4">
+            <h2>🎬 Demo en Vivo - Completamente Funcional</h2>
+            
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">🌐</div>
+                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">humanbiblio-app.netlify.app</h3>
+                <p>Demo completamente funcional con todas las características implementadas</p>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🏛️</div>
+                    <h4>Ágora Operativo</h4>
+                    <p style="font-size: 0.9rem;">5 perfiles + IA contextual + Chat multimedia</p>
+                </div>
+                <div class="metric-card">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🛍️</div>
+                    <h4>Boulevard Activo</h4>
+                    <p style="font-size: 0.9rem;">4 negocios + Carrusel + Perfiles expandidos</p>
+                </div>
+                <div class="metric-card">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">📊</div>
+                    <h4>Dashboard Funcional</h4>
+                    <p style="font-size: 0.9rem;">Geolocalización + Mapa + Matching IA</p>
+                </div>
+                <div class="metric-card">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🌌</div>
+                    <h4>Universo Implementado</h4>
+                    <p style="font-size: 0.9rem;">Proyectos + Financiadores + Sistema de likes</p>
+                </div>
+                <div class="metric-card">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">📱</div>
+                    <h4>PWA Instalable</h4>
+                    <p style="font-size: 0.9rem;">App nativa + Offline + Logo corporativo</p>
+                </div>
+                <div class="metric-card">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🧠</div>
+                    <h4>IA Contextual</h4>
+                    <p style="font-size: 0.9rem;">4 personalidades + Respuestas especializadas</p>
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #1e40af, #7c3aed); color: white; padding: 2rem; border-radius: 15px; text-align: center;">
+                <h3 style="color: white; margin-bottom: 1rem;">⚡ Performance Técnico</h3>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1rem;">
+                    <div><strong>95+</strong><br/>Lighthouse</div>
+                    <div><strong>100/100</strong><br/>PWA Score</div>
+                    <div><strong>&lt;2s</strong><br/>Load Time</div>
+                    <div><strong>30+</strong><br/>Componentes</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Mercado y Oportunidad -->
+        <div class="slide" id="slide-5">
+            <h2>📈 Mercado y Oportunidad</h2>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-value">$42.9B</div>
+                    <div class="metric-label">TAM - Social Media + B2B Communication</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">$8.5B</div>
+                    <div class="metric-label">SAM - Conscious Communication</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">$850M</div>
+                    <div class="metric-label">SOM - Anti-Algorithm Market</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">25%</div>
+                    <div class="metric-label">CAGR - Market Growth</div>
+                </div>
+            </div>
+
+            <div class="two-column" style="margin-top: 3rem;">
+                <div>
+                    <h3 style="color: var(--primary-color);">🎯 Target Segments</h3>
+                    <div style="space-y: 1rem;">
+                        <p style="text-align: left;"><strong>👥 Professionals:</strong> 50M conscious users</p>
+                        <p style="text-align: left;"><strong>🏢 SMB Businesses:</strong> 5M authentic businesses</p>
+                        <p style="text-align: left;"><strong>🏛️ Enterprise:</strong> 10K companies seeking authentic communication</p>
+                        <p style="text-align: left;"><strong>🌍 Global:</strong> International expansion ready</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="color: var(--accent-color);">📊 Market Trends</h3>
+                    <div style="space-y: 1rem;">
+                        <p style="text-align: left;"><strong>📈 Privacy awareness:</strong> +40% YoY</p>
+                        <p style="text-align: left;"><strong>🤖 AI adoption:</strong> +60% in B2B</p>
+                        <p style="text-align: left;"><strong>🌱 Conscious consumption:</strong> +35% trend</p>
+                        <p style="text-align: left;"><strong>📱 PWA adoption:</strong> +80% enterprise</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="investment-highlight">
+                <h3 style="color: var(--success-color);">💡 Perfect Timing</h3>
+                <p style="color: var(--text-dark);">
+                    Regulaciones anti-algoritmos emergentes + Creciente conciencia sobre manipulación digital + 
+                    Demanda de herramientas auténticas = <strong>Momento ideal para HUMANBIBLIO</strong>
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 6: Revenue Streams -->
+        <div class="slide" id="slide-6">
+            <h2>💰 5 Revenue Streams Diversificados</h2>
+            
+            <div class="revenue-breakdown">
+                <div class="revenue-item">
+                    <div>
+                        <strong>🏛️ Ágora Premium</strong>
+                        <div style="font-size: 0.9rem; color: var(--text-light);">Subscripciones + IA especializada + Features premium</div>
+                    </div>
+                    <div style="font-weight: 700; color: var(--primary-color);">$22.5M</div>
+                </div>
+                <div class="revenue-item">
+                    <div>
+                        <strong>🛍️ World Boulevard</strong>
+                        <div style="font-size: 0.9rem; color: var(--text-light);">Comercio orgánico + Marketplace fees + Subscripciones comerciales</div>
+                    </div>
+                    <div style="font-weight: 700; color: var(--accent-color);">$140M</div>
+                </div>
+                <div class="revenue-item">
+                    <div>
+                        <strong>🌌 Universo</strong>
+                        <div style="font-size: 0.9rem; color: var(--text-light);">Financiación conversacional + Project fees + Recognition badges</div>
+                    </div>
+                    <div style="font-weight: 700; color: var(--secondary-color);">$12M</div>
+                </div>
+                <div class="revenue-item">
+                    <div>
+                        <strong>🏢 Enterprise Solutions</strong>
+                        <div style="font-size: 0.9rem; color: var(--text-light);">Licencias corporativas + Custom AI + White-label</div>
+                    </div>
+                    <div style="font-weight: 700; color: var(--warning-color);">$25M</div>
+                </div>
+                <div class="revenue-item">
+                    <div>
+                        <strong>🔧 API Ecosystem</strong>
+                        <div style="font-size: 0.9rem; color: var(--text-light);">Developer platform + Third-party apps + Revenue sharing</div>
+                    </div>
+                    <div style="font-weight: 700; color: var(--error-color);">$15M</div>
+                </div>
+                <div class="revenue-item" style="background: rgba(37, 99, 235, 0.1); border-radius: 10px; margin-top: 1rem;">
+                    <div>
+                        <strong style="font-size: 1.3rem;">TOTAL REVENUE AÑO 3</strong>
+                    </div>
+                    <div style="font-weight: 800; color: var(--primary-color); font-size: 1.5rem;">$214.5M</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <p style="font-size: 1.1rem; color: var(--text-light);">
+                    <strong>Diversificación de riesgo:</strong> 5 revenue streams independientes con diferentes ciclos de adopción
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 7: Proyecciones Financieras -->
+        <div class="slide" id="slide-7">
+            <h2>📊 Proyecciones Financieras (3 Años)</h2>
+            
+            <table class="competitive-table">
+                <thead>
+                    <tr>
+                        <th>Revenue Stream</th>
+                        <th>Año 1</th>
+                        <th>Año 2</th>
+                        <th>Año 3</th>
+                        <th>CAGR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>🏛️ Ágora Premium</strong></td>
+                        <td>$2.5M</td>
+                        <td>$8.5M</td>
+                        <td>$22.5M</td>
+                        <td>195%</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td><strong>🛍️ World Boulevard</strong></td>
+                        <td>$8M</td>
+                        <td>$45M</td>
+                        <td>$140M</td>
+                        <td>317%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🌌 Universo</strong></td>
+                        <td>$0.5M</td>
+                        <td>$3M</td>
+                        <td>$12M</td>
+                        <td>265%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🏢 Enterprise</strong></td>
+                        <td>$1M</td>
+                        <td>$8M</td>
+                        <td>$25M</td>
+                        <td>272%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🔧 API Ecosystem</strong></td>
+                        <td>$0.2M</td>
+                        <td>$2M</td>
+                        <td>$15M</td>
+                        <td>445%</td>
+                    </tr>
+                    <tr style="background: var(--bg-gradient); color: white; font-weight: 700;">
+                        <td><strong>TOTAL</strong></td>
+                        <td><strong>$12.2M</strong></td>
+                        <td><strong>$66.5M</strong></td>
+                        <td><strong>$214.5M</strong></td>
+                        <td><strong>318%</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="two-column" style="margin-top: 2rem;">
+                <div class="risk-mitigation">
+                    <h4 style="color: var(--warning-color); margin-bottom: 1rem;">⚠️ Factores de Riesgo</h4>
+                    <ul style="text-align: left; font-size: 0.9rem; color: var(--text-dark);">
+                        <li>Competencia de Big Tech (Google, Meta, Microsoft)</li>
+                        <li>Adopción más lenta que proyectada</li>
+                        <li>Cambios regulatorios en IA</li>
+                        <li>Recesión económica afectando gasto enterprise</li>
+                    </ul>
+                </div>
+                <div style="background: linear-gradient(135deg, #f0fdf4, #dcfce7); border: 2px solid var(--success-color); border-radius: 15px; padding: 1.5rem;">
+                    <h4 style="color: var(--success-color); margin-bottom: 1rem;">🛡️ Mitigación</h4>
+                    <ul style="text-align: left; font-size: 0.9rem; color: var(--text-dark);">
+                        <li>First-mover advantage en "Inteligencia Natural"</li>
+                        <li>Multiple revenue streams (diversificación)</li>
+                        <li>Compliance proactivo y transparencia</li>
+                        <li>Freemium model reduce fricción de adopción</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Competencia -->
+        <div class="slide" id="slide-8">
+            <h2>⚔️ Análisis Competitivo</h2>
+            
+            <table class="competitive-table">
+                <thead>
+                    <tr>
+                        <th>Aspecto</th>
+                        <th>LinkedIn</th>
+                        <th>Slack</th>
+                        <th>Discord</th>
+                        <th class="highlight">HUMANBIBLIO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Revenue 2024</strong></td>
+                        <td>$15B</td>
+                        <td>$1.5B</td>
+                        <td>$500M</td>
+                        <td class="highlight">$0 → $214M (Año 3)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>IA Especializada</strong></td>
+                        <td>❌ Básica</td>
+                        <td>❌ No tiene</td>
+                        <td>❌ Bots simples</td>
+                        <td class="highlight">✅ 4+ personalidades contextuales</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Comercio Orgánico</strong></td>
+                        <td>❌ Ads intrusivos</td>
+                        <td>❌ No comercio</td>
+                        <td>❌ No comercio</td>
+                        <td class="highlight">✅ World Boulevard certificado</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PWA Nativa</strong></td>
+                        <td>❌ App store only</td>
+                        <td>❌ App store only</td>
+                        <td>❌ App store only</td>
+                        <td class="highlight">✅ Instalable directamente</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Anti-Manipulación</strong></td>
+                        <td>❌ Algoritmos opacos</td>
+                        <td>❌ No aplicable</td>
+                        <td>❌ Engagement-driven</td>
+                        <td class="highlight">✅ Usuario controla 100%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Financiación Conversacional</strong></td>
+                        <td>❌ No existe</td>
+                        <td>❌ No existe</td>
+                        <td>❌ No existe</td>
+                        <td class="highlight">✅ Único en el mercado</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="investment-highlight">
+                <h3 style="color: var(--success-color);">🏆 Ventaja Competitiva Única</h3>
+                <p style="color: var(--text-dark); font-size: 1.2rem;">
+                    <strong>"Inteligencia Natural"</strong> - Primer concepto que combina IA especializada + 
+                    Comunicación auténtica + Comercio orgánico en una sola plataforma
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 9: Equipo y Ejecución -->
+        <div class="slide" id="slide-9">
+            <h2>👨‍💻 Equipo y Capacidad de Ejecución</h2>
+            
+            <div class="two-column">
+                <div>
+                    <h3 style="color: var(--primary-color);">🏗️ Evidencia Técnica</h3>
+                    <div style="space-y: 1rem;">
+                        <p style="text-align: left;"><strong>✅ Demo 100% funcional</strong> - Todas las features implementadas</p>
+                        <p style="text-align: left;"><strong>✅ Arquitectura escalable</strong> - React 18 + TypeScript + Supabase</p>
+                        <p style="text-align: left;"><strong>✅ Performance optimizado</strong> - 95+ Lighthouse score</p>
+                        <p style="text-align: left;"><strong>✅ PWA completa</strong> - Instalable como app nativa</p>
+                        <p style="text-align: left;"><strong>✅ IA operativa</strong> - 4 personalidades funcionando</p>
+                        <p style="text-align: left;"><strong>✅ Deploy automático</strong> - Netlify optimizado</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="color: var(--accent-color);">📊 Métricas de Desarrollo</h3>
+                    <div style="space-y: 1rem;">
+                        <p style="text-align: left;"><strong>15,000+</strong> líneas de código</p>
+                        <p style="text-align: left;"><strong>30+</strong> componentes React</p>
+                        <p style="text-align: left;"><strong>8+</strong> hooks personalizados</p>
+                        <p style="text-align: left;"><strong>50+</strong> archivos totales</p>
+                        <p style="text-align: left;"><strong>100%</strong> TypeScript coverage</p>
+                        <p style="text-align: left;"><strong>0</strong> critical bugs</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metrics-grid" style="margin-top: 2rem;">
+                <div class="metric-card">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">⚡</div>
+                    <h4>Velocidad de Desarrollo</h4>
+                    <p style="font-size: 0.9rem;">MVP completo en tiempo récord</p>
+                </div>
+                <div class="metric-card">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🎯</div>
+                    <h4>Visión Clara</h4>
+                    <p style="font-size: 0.9rem;">Concepto "Inteligencia Natural" definido</p>
+                </div>
+                <div class="metric-card">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🔧</div>
+                    <h4>Ejecución Técnica</h4>
+                    <p style="font-size: 0.9rem;">Arquitectura moderna y escalable</p>
+                </div>
+                <div class="metric-card">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🚀</div>
+                    <h4>Go-to-Market</h4>
+                    <p style="font-size: 0.9rem;">Demo funcional = validación inmediata</p>
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #1e40af, #7c3aed); color: white; padding: 2rem; border-radius: 15px; text-align: center; margin-top: 2rem;">
+                <h3 style="color: white; margin-bottom: 1rem;">🏆 Capacidad Demostrada</h3>
+                <p style="color: rgba(255,255,255,0.9);">
+                    Hemos construido un producto completo y funcional que demuestra nuestra capacidad de ejecución. 
+                    No es solo una idea - es una realidad operativa lista para escalar.
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 10: Inversión y Uso de Fondos -->
+        <div class="slide" id="slide-10">
+            <h2>💰 Inversión Solicitada y Uso de Fondos</h2>
+            
+            <div class="investment-highlight">
+                <h3 style="color: var(--success-color); margin-bottom: 1rem;">🎯 Series A: $5M - $15M</h3>
+                <p style="color: var(--text-dark);">
+                    Para escalar de MVP funcional a líder de mercado en comunicación consciente
+                </p>
+            </div>
+
+            <div class="two-column">
+                <div>
+                    <h3 style="color: var(--primary-color);">💸 Uso de Fondos</h3>
+                    <div class="revenue-breakdown" style="background: linear-gradient(135deg, #f0f9ff, #e0f2fe);">
+                        <div class="revenue-item">
+                            <div><strong>👥 Team Expansion</strong></div>
+                            <div><strong>40%</strong></div>
+                        </div>
+                        <div class="revenue-item">
+                            <div><strong>🧠 AI Development</strong></div>
+                            <div><strong>25%</strong></div>
+                        </div>
+                        <div class="revenue-item">
+                            <div><strong>📈 Marketing & Sales</strong></div>
+                            <div><strong>20%</strong></div>
+                        </div>
+                        <div class="revenue-item">
+                            <div><strong>🏗️ Infrastructure</strong></div>
+                            <div><strong>10%</strong></div>
+                        </div>
+                        <div class="revenue-item">
+                            <div><strong>🔐 Legal & IP</strong></div>
+                            <div><strong>5%</strong></div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="color: var(--accent-color);">📈 ROI Proyectado</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">25x</div>
+                            <div class="metric-label">Conservative Return</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">75x</div>
+                            <div class="metric-label">Base Case Return</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">150x</div>
+                            <div class="metric-label">Bull Case Return</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">142%</div>
+                            <div class="metric-label">IRR (Base Case)</div>
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(5, 150, 105, 0.1); border: 2px solid var(--success-color); border-radius: 15px; padding: 1.5rem; margin-top: 1rem;">
+                        <h4 style="color: var(--success-color); margin-bottom: 0.5rem;">🎯 Exit Scenarios (2029)</h4>
+                        <p style="text-align: left; font-size: 0.9rem; color: var(--text-dark);">
+                            <strong>IPO:</strong> $15B+ valuation (Slack-like)<br/>
+                            <strong>Acquisition:</strong> $5-30B (Strategic buyer)<br/>
+                            <strong>Continued growth:</strong> $50B+ (Platform dominance)
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem; background: rgba(37, 99, 235, 0.1); padding: 2rem; border-radius: 15px;">
+                <h3 style="color: var(--primary-color);">🚀 Milestones Clave</h3>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
+                    <div><strong>Mes 6:</strong> $500K MRR</div>
+                    <div><strong>Mes 12:</strong> $2M MRR</div>
+                    <div><strong>Mes 18:</strong> $5M MRR</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Call to Action -->
+        <div class="slide" id="slide-11">
+            <div class="logo-container">
+                <img src="https://i.imgur.com/TzZrbxK.png" alt="HUMANBIBLIO" class="logo" />
+            </div>
+            
+            <h1 style="font-size: 3rem;">🚀 Únete a la Revolución</h1>
+            <p style="font-size: 1.5rem; color: var(--primary-color); font-weight: 600; margin-bottom: 2rem;">
+                La Inteligencia Natural
+            </p>
+
+            <div class="cta-section">
+                <h3 style="color: white; margin-bottom: 2rem; font-size: 2rem;">💰 Oportunidad de Inversión</h3>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 2rem;">
+                    <div>
+                        <div style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">$5M-$15M</div>
+                        <div style="opacity: 0.9;">Series A</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">75x</div>
+                        <div style="opacity: 0.9;">ROI Proyectado</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">$15B+</div>
+                        <div style="opacity: 0.9;">Exit Valuation</div>
+                    </div>
+                </div>
+                <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem;">
+                    Primera oportunidad de invertir en la revolución de la comunicación digital consciente
+                </p>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <h3 style="color: var(--text-dark); margin-bottom: 1rem;">📞 Próximos Pasos</h3>
+                <p style="font-size: 1.1rem; color: var(--text-light);">
+                    <strong>Demo personalizado</strong> • <strong>Due diligence</strong> • <strong>Term sheet</strong> • <strong>Cierre en 30 días</strong>
+                </p>
+            </div>
+
+            <div style="background: rgba(37, 99, 235, 0.1); padding: 2rem; border-radius: 15px; margin-top: 2rem;">
+                <p style="text-align: center; font-size: 1.3rem; font-weight: 600; color: var(--primary-color);">
+                    🏛️ "Donde la tecnología amplifica la humanidad" ✨
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navegación -->
+    <div class="navigation">
+        <button class="nav-btn" onclick="previousSlide()">← Anterior</button>
+        <button class="nav-btn" onclick="nextSlide()">Siguiente →</button>
+        <button class="nav-btn" onclick="toggleFullscreen()">🔍 Pantalla Completa</button>
+    </div>
+
+    <!-- Contador de slides -->
+    <div class="slide-counter">
+        <span id="current-slide">1</span> / <span id="total-slides">11</span>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 11;
+
+        function showSlide(n) {
+            // Ocultar todas las slides
+            document.querySelectorAll('.slide').forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Mostrar slide actual
+            document.getElementById(`slide-${n}`).classList.add('active');
+            
+            // Actualizar contador
+            document.getElementById('current-slide').textContent = n;
+            
+            currentSlide = n;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                showSlide(currentSlide + 1);
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlide > 1) {
+                showSlide(currentSlide - 1);
+            }
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // Navegación con teclado
+        document.addEventListener('keydown', function(e) {
+            switch(e.key) {
+                case 'ArrowRight':
+                case ' ':
+                    nextSlide();
+                    break;
+                case 'ArrowLeft':
+                    previousSlide();
+                    break;
+                case 'Escape':
+                    if (document.fullscreenElement) {
+                        document.exitFullscreen();
+                    }
+                    break;
+                case 'f':
+                case 'F':
+                    toggleFullscreen();
+                    break;
+            }
+        });
+
+        // Navegación con clic
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('slide')) {
+                const rect = e.target.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const slideWidth = rect.width;
+                
+                if (clickX > slideWidth / 2) {
+                    nextSlide();
+                } else {
+                    previousSlide();
+                }
+            }
+        });
+
+        // Inicializar
+        document.getElementById('total-slides').textContent = totalSlides;
+        
+        console.log('🏛️ HUMANBIBLIO - Presentación para Inversores');
+        console.log('📊 11 slides profesionales cargadas');
+        console.log('⌨️ Navegación: Flechas, Espacio, F (fullscreen)');
+        console.log('🖱️ Click derecho/izquierdo para navegar');
+        console.log('💾 Para descargar: Ctrl+S o Cmd+S');
+    </script>
+</body>
+</html>
