@@ -1,11 +1,7 @@
 {
   "name": "vite-react-typescript-starter",
   "private": true,
-<<<<<<< HEAD
   "version": "1.0.3-pilot",
-=======
-  "version": "0.0.0",
->>>>>>> d2f4627176dbd2b45f9f32eb8f6c4ad1770ae193
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -16,7 +12,7 @@
     "clean": "rm -rf dist node_modules/.vite"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.55.0",
+    "@supabase/Bolt Database-js": "^2.55.0",
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
